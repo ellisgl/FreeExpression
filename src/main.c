@@ -58,13 +58,12 @@ void setup(void) {
 
     usb_puts("\f");
     usb_puts(VERSION);
-
-    display_print(VERSION);
 }
 
 int main(void) {
     setup();
     display_update();
+    display_print(VERSION);
 
     while (1) {
         cli_poll(); // polls ready bytes from USB  and processes them
