@@ -69,7 +69,8 @@ all: $(TARGET).elf $(TARGET).hex $(TARGET).lss tags
 
 #you may need to change this line to program your device
 prog: all 
-	avrdude -pm128 -cstk500v2 -b115200 -P/dev/ttyUSB0 -u -V -U flash:w:$(TARGET).hex:i 
+	#avrdude -pm128 -cstk500v2 -b115200 -P/dev/ttyUSB0 -u -V -U flash:w:$(TARGET).hex:i 
+	avrdude -c usbasp -p m1281 -U flash:w:$(TARGET).hex 
 
 # Create final output files (.hex) from ELF output file.
 %.hex: %.elf
