@@ -1,6 +1,4 @@
-# Freecut: open firmware for Cricut Expression 1 devices.
-#
-# 
+# FreeExpression: open firmware for Cricut Expression 1 devices.
 # MCU name
 MCU = atmega1281
 
@@ -8,7 +6,7 @@ MCU = atmega1281
 FORMAT = ihex
 
 # Target file name (without extension).
-TARGET = freecut
+TARGET = freeexpression
 
 # Speed
 FCLK = 16000000UL
@@ -30,14 +28,6 @@ ASFLAGS = -Wa,-ahlms=$(<:.S=.lst),-gstabs
 LDFLAGS = -Wl,--gc-sections,-Map=$(TARGET).map,--cref
 
 # Additional libraries
-#
-# Minimalistic printf version
-#LDFLAGS += -Wl,-u,vfprintf -lprintf_min
-#
-# Floating point printf version (requires -lm below)
-#LDFLAGS +=  -Wl,-u,vfprintf -lprintf_flt
-#
-# -lm = math library
 LDFLAGS += -lm
 LDFLAGS += -L./m2u8 -lm2u8
 # ---------------------------------------------------------------------------
@@ -46,9 +36,7 @@ LDFLAGS += -L./m2u8 -lm2u8
 
 # Define programs and commands.
 SHELL = sh
-
 CC = avr-gcc
-
 OBJCOPY = avr-objcopy
 OBJDUMP = avr-objdump
 
@@ -67,7 +55,7 @@ all: $(TARGET).elf $(TARGET).hex $(TARGET).lss tags
 
 .PHONY: prog 
 
-#you may need to change this line to program your device
+# You may need to change this line to program your device.
 prog: all 
 	#avrdude -pm128 -cstk500v2 -b115200 -P/dev/ttyUSB0 -u -V -U flash:w:$(TARGET).hex:i 
 	avrdude -c usbasp -p m1281 -U flash:w:$(TARGET).hex 
@@ -90,24 +78,19 @@ prog: all
 %.elf: $(OBJ)
 	$(CC) $(ALL_CFLAGS) $(OBJ) --output $@ $(LDFLAGS)
 
-
 # Compile: create object files from C source files.
 %.o : %.c
 	$(CC) -c $(ALL_CFLAGS) $< -o $@
-
 
 # Compile: create assembler files from C source files.
 %.s : %.c
 	$(CC) -S $(ALL_CFLAGS) $< -o $@
 
-
 # Assemble: create object files from assembler source files.
 %.o : %.S
 	$(CC) -c $(ALL_ASFLAGS) $< -o $@
 
-
 # Target: clean project.
-
 clean :
 	rm -f *.hex
 	rm -f *.obj
@@ -125,7 +108,6 @@ clean :
 	rm -f $(SRC:.c=.d)
 	rm -f logfile
 
-
 # Automatically generate C source code dependencies. 
 # (Code originally taken from the GNU make user manual and modified (See README.txt Credits).)
 # Note that this will work with sh (bash) and sed that is shipped with WinAVR (see the SHELL variable defined above).
@@ -135,10 +117,8 @@ clean :
 	| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
 	> $@; [ -s $@ ] || rm -f $@
 
-
 # Remove the '-' if you want to see the dependency files generated.
 -include $(SRC:.c=.d)
-
 
 # Listing of phony targets.
 .PHONY : all clean 
