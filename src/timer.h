@@ -1,4 +1,4 @@
-/*
+/**
  * timer.h
  *
  *
@@ -16,18 +16,17 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with FreeExpression. If not, see http://www.gnu.org/licenses/.
- *
  */
 #ifndef TIMER_H
 #define TIMER_H
 
-void timer_init( void );
-void usleep( int usecs );
-void msleep( unsigned msecs );
-void beeper_on( int Hz );
-void beeper_off( void );
-void timer_set_stepper_speed( int delay );
-void timer_set_pen_pressure( int pressure );
+void timer_init(void);
+void usleep(int usecs);
+void msleep(unsigned msecs);
+void beeper_on(int Hz);
+void beeper_off(void);
+void timer_set_stepper_speed(int delay);
+void timer_set_pen_pressure(int pressure);
 int timer_get_pen_pressure(void);
 int timer_get_stepper_speed(void);
 void beep(void);
