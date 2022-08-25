@@ -1,4 +1,4 @@
-/*
+/**
  * keypad.c
  *
  * Keypad is designed as a matrix with 20 cols, and 5 rows. A 20 bit shift register controls the individual column bits
@@ -39,7 +39,7 @@
  *  4   | Down 
  
  * 
-  * The various LEDs are also connected to the shift register outputs, 
+ * The various LEDs are also connected to the shift register outputs, 
  * and can be turned on with the LED Enable pin (0=On, 1=Off).  
  *
  * LED Layout is as follows:
@@ -90,62 +90,58 @@
 // These appear to be the same on both the Cake and Expression machines
 // There are some machine specific routines in the keypad_cake.c and keypad_expression.c files
 // 
-#define STOP	(1 << 0)	// PD0
-#define LEDS	(1 << 5)	// PD5
-#define DATA	(1 << 6) 	// PD6
-#define CLK		(1 << 7)	// PD7
-#define ROWS    (0x1f)		// mask for PG4-0
+#define STOP (1 << 0) // PD0
+#define LEDS (1 << 5) // PD5
+#define DATA (1 << 6)  // PD6
+#define CLK  (1 << 7) // PD7
+#define ROWS    (0x1f)  // mask for PG4-0
 
-#define clk_h()		do { PORTD |=  CLK;  } while(0)
-#define clk_l()		do { PORTD &= ~CLK;  } while(0)
-#define data_h()	do { PORTD |=  DATA; } while(0)
-#define data_l()	do { PORTD &= ~DATA; } while(0)
-#define get_rows()	(~PING & ROWS)
+#define clk_h()  do { PORTD |=  CLK;  } while(0)
+#define clk_l()  do { PORTD &= ~CLK;  } while(0)
+#define data_h() do { PORTD |=  DATA; } while(0)
+#define data_l() do { PORTD &= ~DATA; } while(0)
+#define get_rows() (~PING & ROWS)
 
-static uint8_t keypad_state[KBD_MAX_COLS];	// current state
-static uint8_t keypad_prev[KBD_MAX_COLS];  // previous state
+static uint8_t keypad_state[KBD_MAX_COLS]; // current state
+static uint8_t keypad_prev[KBD_MAX_COLS]; // previous state
 static uint16_t leds;
 static uint8_t sound_mode = 1; // sound on
 
-en_language Lang = HPGL;	
+en_language Lang = HPGL;
 
-static int k_state=0;
+static int k_state = 0;
 void _beep(int key);
 
 /*
  * keypad_write_cols: write all 16 column bits in 'val' to shift register.
  */
-static void keypad_write_cols( short val )
-{
+static void keypad_write_cols(short val) {
     int i;
 
-    for( i = 0; i < KBD_MAX_COLS; i++ )
-    {
-        if( val < 0 ) 
-			data_h( );
-		else
-			data_l( );
-		clk_h( );
-		val <<= 1;
-		clk_l( );
+    for (i = 0; i < KBD_MAX_COLS; i++) {
+        if (val < 0)
+            data_h();
+        else
+            data_l();
+        clk_h();
+        val <<= 1;
+        clk_l();
     }
 }
 
-void keypad_set_leds( uint16_t mask )
-{
+void keypad_set_leds(uint16_t mask) {
     leds = mask;
-    leds_off( );
-    keypad_write_cols( ~leds );
-    leds_on( );
+    leds_off();
+    keypad_write_cols(~leds);
+    leds_on();
 }
 
 /*
  * return state of 'STOP' key.
   STOP is not part of the keyboard  -- individually wired to port
  */
-char keypad_stop_pressed( void )
-{
-	int c=(PIND & STOP);
+char keypad_stop_pressed(void) {
+    int c = (PIND & STOP);
     return !c;
 }
 
@@ -153,218 +149,207 @@ char keypad_stop_pressed( void )
  * keypad_scan: perform a single scan of keyboard. Returns keycode of 
  * key that was pressed (or -1 if nothing).  
  */
-int keypad_scan( void )
-{
+int keypad_scan(void) {
     int row, col;
     int pressed = -1;
 
-	keypad_write_cols( 0);	// All bits to 0
-    data_h( );				// shift in consecutive 1's
-	
-    for( col = 0; col < KBD_MAX_COLS; col++ )
-    {
-			keypad_state[col] = get_rows( );
-			clk_h( );
-			clk_l( );
-	}
-	keypad_write_cols( ~leds );
+    keypad_write_cols(0); // All bits to 0
+    data_h(); // shift in consecutive 1's
+
+    for (col = 0; col < KBD_MAX_COLS; col++) {
+        keypad_state[col] = get_rows();
+        clk_h();
+        clk_l();
+    }
+    keypad_write_cols(~leds);
 
     // keyboard has been scanned, now look for pressed keys
-    for( col = 0; col < KBD_MAX_COLS; col++ )
-    {
-		uint8_t diff = keypad_state[col] ^ keypad_prev[col];
-		if( diff )
-		{
-			for( row = 0; row < KBD_MAX_ROWS; row++ )
-			{
-				uint8_t mask = 1 << row;
-				// the highest column that shows switch bit closure as a bit in the row read is the column associated with this button.
-				// we keep overwriting key pressed with readings from higher columns until the last column that shows the bit
-				if( diff & mask & keypad_state[col] )
-				{
-					pressed = row * KBD_MAX_COLS + col;
-				}
-			}
-		}
-		keypad_prev[col] = keypad_state[col];
+    for (col = 0; col < KBD_MAX_COLS; col++) {
+        uint8_t diff = keypad_state[col] ^ keypad_prev[col];
+        if (diff) {
+            for (row = 0; row < KBD_MAX_ROWS; row++) {
+                uint8_t mask = 1 << row;
+                // the highest column that shows switch bit closure as a bit in the row read is the column associated with this button.
+                // we keep overwriting key pressed with readings from higher columns until the last column that shows the bit
+                if (diff & mask & keypad_state[col]) {
+                    pressed = row * KBD_MAX_COLS + col;
+                }
+            }
+        }
+        keypad_prev[col] = keypad_state[col];
     }
     return pressed;
 }
 
+void keypadSet_Speed_state(void) {
+    k_state = KEYPAD_XTRA2;
 
-
-void keypadSet_Speed_state( void )
-{
-	k_state = KEYPAD_XTRA2;
-	
-}
-void keypadSet_Pressure_state( void )
-{
-	k_state = KEYPAD_XTRA1;
-	
 }
 
-int keypad_poll( void )
-{
-	int c;
-	int key = keypad_scan( );
-	#ifdef DEBUG_KEYBOARD
-	char string[40];
-	if(key>=0) {
-		sprintf(string,"%d",key);
-		display_puts(string);
-	}
-	#endif
-	// the button leds are really strange
-	// some of them are on a shift register it seems
-	// but some are directly connected to pins
-	//keypad_set_leds( 0x000 );
-	
-	switch( key )
-	{
-		case KEYPAD_SOUNDONOFF:
-			sound_mode = !sound_mode;
-			break;
-		case KEYPAD_FLIP:
-			usb_puts("Hello world");		
-			break;
-		case KEYPAD_G:
-			Lang=G_CODE;
-			display_puts("G-CODE selected");
-			break;
-			
-		case KEYPAD_H:
-			Lang=HPGL;
-			display_puts("HPGL selected");
-			break;
-			
-		case KEYPAD_P:
-			Lang=GPGL;
-			display_puts("GPGL selected");
-			break;	
-			
-		case KEYPAD_LOADMAT:
-		stepper_load_paper();
-		display_puts("Media loaded");
-		break;
+void keypadSet_Pressure_state(void) {
+    k_state = KEYPAD_XTRA1;
 
-		case KEYPAD_UNLOADMAT:
-		stepper_unload_paper();
-		display_puts("Media unloaded");
-		break;
-		
-		case KEYPAD_RESETALL:
-		display_puts("Homing carriage...");
-		stepper_home();
-		break;
-		
-		case KEYPAD_BACKSPACE:
-		stepper_set_origin00();
-		display_puts("Location 0,0 set");
-		break;
-		
-		// this jogs X and Y freely -- use to load, unload or set position for  0,0 origin
-		case KEYPAD_MOVEUP:
-		case KEYPAD_MOVEUPLEFT:
-		case KEYPAD_MOVELEFT:
-		case KEYPAD_MOVEDNLEFT:
-		case KEYPAD_MOVEDN:
-		case KEYPAD_MOVEDNRIGHT:
-		case KEYPAD_MOVERIGHT:
-		case KEYPAD_MOVEUPRIGHT:
-		stepper_jog_manual(key,25);		// move 1/16" each increment
-		
-		// For auto key repeat on these buttons , clear previous  kbd status[] so that a new button press registers again 
-		for(  c = 0; c < KBD_MAX_COLS; c++ )	
-	 
-			keypad_prev[c] = 0;
-		break;
-		
-		
-#ifdef DEBUG_FLASH		
-		case KEYPAD_F1:
-		flash_test();
-		break;
+}
+
+int keypad_poll(void) {
+    int c;
+    int key = keypad_scan();
+#ifdef DEBUG_KEYBOARD
+    char string[40];
+    if (key >= 0) {
+        sprintf(string, "%d", key);
+        display_puts(string);
+    }
 #endif
-		case KEYPAD_F5:
-		display_puts("Cutter down");
-		pen_down();
-		break;
-		
-		case KEYPAD_F6:
-		display_puts("Cutter up");
-		pen_up();
-		break;
-		
-		
-		case KEYPAD_XTRA1:
-		{
-			k_state=key;
-			break;
-		}
-		case KEYPAD_XTRA2: 
-		{
-			k_state=key;
-			break;
-		}
-		case KEYPAD_CUT:
-			k_state=key;
-			break;
-			
-		case KEYPAD_MINUS:		// decrements either pressure or speed depending on what was last pressed 
-			if(k_state==KEYPAD_XTRA1) { // PRESSURE SET
-				// pressure is inversely related to 1023, min pressure
-				int p=timer_get_pen_pressure()-1;
-				 timer_set_pen_pressure(p);
-			}
-			if(k_state==KEYPAD_XTRA2) {  // SPEED SET
-				int p=timer_get_stepper_speed()-1;
-				timer_set_stepper_speed(p);
-			}
-			break;
-			
-		case KEYPAD_PLUS:		// increments either pressure or speed depending on what was last pressed 
-			if(k_state==KEYPAD_XTRA1) { // PRESSURE SET
-				// pressure is inversely related to 1023, min pressure
-				int p=timer_get_pen_pressure()+1;
-				timer_set_pen_pressure(p);
-			}
-			if(k_state==KEYPAD_XTRA2) { // SPEED SET
-				int p=timer_get_stepper_speed()+1;
-				timer_set_stepper_speed(p);
-			}
-		break;
-	}
-	_beep(key);
-	return key;
+    // the button leds are really strange
+    // some of them are on a shift register it seems
+    // but some are directly connected to pins
+    //keypad_set_leds( 0x000 );
+
+    switch (key) {
+        case KEYPAD_SOUNDONOFF:
+            sound_mode = !sound_mode;
+            break;
+        case KEYPAD_FLIP:
+            usb_puts("Hello world");
+            break;
+        case KEYPAD_G:
+            Lang = G_CODE;
+            display_puts("G-CODE selected");
+            break;
+
+        case KEYPAD_H:
+            Lang = HPGL;
+            display_puts("HPGL selected");
+            break;
+
+        case KEYPAD_P:
+            Lang = GPGL;
+            display_puts("GPGL selected");
+            break;
+
+        case KEYPAD_LOADMAT:
+            stepper_load_paper();
+            display_puts("Media loaded");
+            break;
+
+        case KEYPAD_UNLOADMAT:
+            stepper_unload_paper();
+            display_puts("Media unloaded");
+            break;
+
+        case KEYPAD_RESETALL:
+            display_puts("Homing carriage...");
+            stepper_home();
+            break;
+
+        case KEYPAD_BACKSPACE:
+            stepper_set_origin00();
+            display_puts("Location 0,0 set");
+            break;
+
+            // this jogs X and Y freely -- use to load, unload or set position for  0,0 origin
+        case KEYPAD_MOVEUP:
+        case KEYPAD_MOVEUPLEFT:
+        case KEYPAD_MOVELEFT:
+        case KEYPAD_MOVEDNLEFT:
+        case KEYPAD_MOVEDN:
+        case KEYPAD_MOVEDNRIGHT:
+        case KEYPAD_MOVERIGHT:
+        case KEYPAD_MOVEUPRIGHT:
+            stepper_jog_manual(key, 25); // move 1/16" each increment
+
+            // For auto key repeat on these buttons , clear previous  kbd status[] so that a new button press registers again 
+            for (c = 0; c < KBD_MAX_COLS; c++)
+
+                keypad_prev[c] = 0;
+            break;
+
+
+#ifdef DEBUG_FLASH  
+        case KEYPAD_F1:
+            flash_test();
+            break;
+#endif
+        case KEYPAD_F5:
+            display_puts("Cutter down");
+            pen_down();
+            break;
+
+        case KEYPAD_F6:
+            display_puts("Cutter up");
+            pen_up();
+            break;
+
+
+        case KEYPAD_XTRA1:
+        {
+            k_state = key;
+            break;
+        }
+        case KEYPAD_XTRA2:
+        {
+            k_state = key;
+            break;
+        }
+        case KEYPAD_CUT:
+            k_state = key;
+            break;
+
+        case KEYPAD_MINUS: // decrements either pressure or speed depending on what was last pressed 
+            if (k_state == KEYPAD_XTRA1) { // PRESSURE SET
+                // pressure is inversely related to 1023, min pressure
+                int p = timer_get_pen_pressure() - 1;
+                timer_set_pen_pressure(p);
+            }
+            if (k_state == KEYPAD_XTRA2) { // SPEED SET
+                int p = timer_get_stepper_speed() - 1;
+                timer_set_stepper_speed(p);
+            }
+            break;
+
+        case KEYPAD_PLUS: // increments either pressure or speed depending on what was last pressed 
+            if (k_state == KEYPAD_XTRA1) { // PRESSURE SET
+                // pressure is inversely related to 1023, min pressure
+                int p = timer_get_pen_pressure() + 1;
+                timer_set_pen_pressure(p);
+            }
+            if (k_state == KEYPAD_XTRA2) { // SPEED SET
+                int p = timer_get_stepper_speed() + 1;
+                timer_set_stepper_speed(p);
+            }
+            break;
+    }
+    _beep(key);
+    return key;
 }
+
 void _beep(int key) {
-	switch(key)
-	{
-		case KEYPAD_MOVEUP:
-		case KEYPAD_MOVEUPLEFT:
-		case KEYPAD_MOVELEFT:
-		case KEYPAD_MOVEDNLEFT:
-		case KEYPAD_MOVEDN:
-		case KEYPAD_MOVEDNRIGHT:
-		case KEYPAD_MOVERIGHT:
-		case KEYPAD_MOVEUPRIGHT:		
-			break;
-		default:
-		if (sound_mode == 1 && key > 0 )		// if a key was pressed that is not assigned beep
-		{
-			beeper_on( 3600 );
-			msleep( 50 );
-			beeper_off( );
-		}
-	}
+    switch (key) {
+        case KEYPAD_MOVEUP:
+        case KEYPAD_MOVEUPLEFT:
+        case KEYPAD_MOVELEFT:
+        case KEYPAD_MOVEDNLEFT:
+        case KEYPAD_MOVEDN:
+        case KEYPAD_MOVEDNRIGHT:
+        case KEYPAD_MOVERIGHT:
+        case KEYPAD_MOVEUPRIGHT:
+            break;
+        default:
+            if (sound_mode == 1 && key > 0) // if a key was pressed that is not assigned beep
+            {
+                beeper_on(3600);
+                msleep(50);
+                beeper_off();
+            }
+    }
 }
-void keypad_init( void )
-{
-    clk_l( );
-    leds_off( );
-    DDRD |= (LEDS | DATA | CLK); 
+
+void keypad_init(void) {
+    clk_l();
+    leds_off();
+    DDRD |= (LEDS | DATA | CLK);
     PORTD |= STOP;
-    DDRG &= ~ROWS;  // rows are inputs
-    PORTG |= ROWS;  // enable internal pull-ups
+    DDRG &= ~ROWS; // rows are inputs
+    PORTG |= ROWS; // enable internal pull-ups
 }
