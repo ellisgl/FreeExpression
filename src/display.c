@@ -4,9 +4,6 @@ void display_init(void) {
     oled_display_init();
 }
 
-/**
-
- */
 void display_puts(char *s) {
     oled_display_puts(s);
 }
@@ -22,5 +19,3 @@ void display_update(void) {
 void display_println(char *s) {
     oled_display_println(s);
 }
-
-
