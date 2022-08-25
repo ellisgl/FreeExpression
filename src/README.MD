@@ -46,6 +46,13 @@ Use Inkscape to draw and send a file to the cutter.  Inkscape 0.91 has an export
 
 ----------
 
+## Compiling ##
+```
+/src/m2u8$ make clean && make
+/src$ make clean && make
+```
+
+This will generate 'freecut.hex' in the /src folder which then you can use avrdude to flash to it. If you are using a cheap 'atmel 51' programmer, you can do ```make prog```
 
 ## Keypad key functions: ##
 
