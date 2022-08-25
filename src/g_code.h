@@ -1,5 +1,6 @@
 #ifndef _GCODE_H
 #define _GCODE_H
+
 #include "shvars.h"
 
 /// Initialize the scanner.
