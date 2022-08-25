@@ -1,4 +1,4 @@
-/*
+/**
  * cli.h
  *
  * This file is part of FreeExpression.
@@ -15,11 +15,10 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with FreeExpression. If not, see http://www.gnu.org/licenses/.
- *
  */
 #ifndef cli_h
 #define cli_h
 
-void cli_poll( void );
+void cli_poll(void);
 
 #endif
