@@ -8,12 +8,7 @@
 #ifndef KEYPAD_H_
 #define KEYPAD_H_
 
-#ifdef MACHINE_CAKE
-	#include "keypad_cake.h"
-#endif
-#ifdef MACHINE_EXPRESSION
-	#include "keypad_expression.h"
-#endif
+#include "keypad_expression.h"
 
 int keypad_poll( void );
 void keypad_init( void );
@@ -22,9 +17,9 @@ char keypad_stop_pressed( void );
 void keypadSet_Speed_state( void );
 void keypadSet_Pressure_state( void );
 int keypad_scan( void );
+
 #define leds_on()	do { PORTD &= ~(1 << 5); } while(0) // PD5
 #define leds_off()	do { PORTD |=  (1 << 5); } while(0) // PD5
-
 
 typedef enum _languge {
 	HPGL=1,
@@ -33,8 +28,5 @@ typedef enum _languge {
 } en_language;
 
 extern en_language Lang;
-
-
-
 
 #endif /* KEYPAD_H_ */

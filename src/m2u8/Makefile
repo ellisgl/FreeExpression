@@ -1,45 +1,62 @@
-# Freecut: open firmware for Cricut Expression 1 devices.
-#
-# 
-# MCU name
 MCU = atmega1281
 
-# Output format. (can be srec, ihex)
-FORMAT = ihex
+TARGET = libm2u8.a
+SRC +=  \
+u8g_bitmap.c \
+u8g_circle.c \
+u8g_clip.c \
+u8g_com_api.c \
+u8g_com_api_16gr.c \
+u8g_com_atmega_sw_spi.c \
+u8g_com_i2c.c \
+u8g_com_io.c \
+u8g_com_null.c \
+u8g_com_atmega_hw_spi.c \
+u8g_com_atmega_sw_spi.c \
+u8g_cursor.c \
+u8g_delay.c \
+u8g_dev_null.c \
+u8g_dev_ssd1325_nhd27oled_bw_new.c \
+u8g_dev_ssd1325_nhd27oled_gr_new.c \
+u8g_ellipse.c \
+u8g_font.c \
+u8g_font_data.c \
+u8g_line.c \
+u8g_ll_api.c \
+u8g_page.c \
+u8g_pb.c \
+u8g_pb14v1.c \
+u8g_pb16h1.c \
+u8g_pb16h2.c \
+u8g_pb16v1.c \
+u8g_pb16v2.c \
+u8g_pb32h1.c \
+u8g_pb8h1.c \
+u8g_pb8h1f.c \
+u8g_pb8h2.c \
+u8g_pb8h8.c \
+u8g_pb8v1.c \
+u8g_pb8v2.c \
+u8g_pbxh16.c \
+u8g_pbxh24.c \
+u8g_polygon.c \
+u8g_rect.c \
+u8g_rot.c \
+u8g_scale.c \
+u8g_state.c \
+u8g_u16toa.c \
+u8g_u8toa.c \
+u8g_virtual_screen.c
 
-# Target file name (without extension).
-TARGET = freecut
-
-# Speed
-FCLK = 16000000UL
-
-# List C source files here. (C dependencies are automatically generated.)
-SRC = main.c usb.c display.c display_oled.c g_code.c keypad.c timer.c stepper.c cli.c flash.c dial.c hpgl.c shvars.c scale.c serial.c spi.c 
-
-# Assembler sources 
-ASRC = 
-
-# Optional compiler flags.
-CFLAGS  = -D$(MCU) $(TEST) $(CE) -Os -DFCLK=$(FCLK) -DF_CPU=$(FCLK) -fpack-struct -I./m2u8 
-CFLAGS += -fshort-enums -Wall -Werror -Wstrict-prototypes 
+CFLAGS = -Os -fpack-struct
+CFLAGS += -fshort-enums -Wall -Wno-error -Wstrict-prototypes -DF_CPU=16000000UL
 
 # Optional assembler flags.
-ASFLAGS = -Wa,-ahlms=$(<:.S=.lst),-gstabs 
+ASFLAGS = -Wa,-ahlms=$(<:.S=.lst),-gstabs
 
 # Optional linker flags.
-LDFLAGS = -Wl,--gc-sections,-Map=$(TARGET).map,--cref
+LDFLAGS = -Wl,-Map=$(TARGET).map,--cref
 
-# Additional libraries
-#
-# Minimalistic printf version
-#LDFLAGS += -Wl,-u,vfprintf -lprintf_min
-#
-# Floating point printf version (requires -lm below)
-#LDFLAGS +=  -Wl,-u,vfprintf -lprintf_flt
-#
-# -lm = math library
-LDFLAGS += -lm
-LDFLAGS += -L./m2u8 -lm2u8
 # ---------------------------------------------------------------------------
 
 # Define directories, if needed.
@@ -59,17 +76,19 @@ OBJ = $(ASRC:.S=.o) $(SRC:.c=.o)
 LST = $(ASRC:.S=.lst) $(SRC:.c=.lst)
 
 # Combine all necessary flags and optional flags. Add target processor to flags.
-ALL_CFLAGS = -mmcu=$(MCU) -I. $(CFLAGS) 
+ALL_CFLAGS = -mmcu=$(MCU) -I. $(CFLAGS)
 ALL_ASFLAGS = -mmcu=$(MCU) -I. -x assembler-with-cpp $(ASFLAGS)
 
 # Default target.
-all: $(TARGET).elf $(TARGET).hex $(TARGET).lss tags
+all: $(TARGET) tags
 
-.PHONY: prog 
+$(TARGET) : $(OBJ)
+	@ar rcs $(TARGET) $(OBJ)
+.PHONY: prog
 
 #you may need to change this line to program your device
-prog: all 
-	avrdude -pm128 -cstk500v2 -b115200 -P/dev/ttyUSB0 -u -V -U flash:w:$(TARGET).hex:i 
+prog: all
+	avrdude -pm128 -cstk500v2 -b115200 -P/dev/ttyUSB0 -u -V -U flash:w:$(TARGET).hex:i
 
 # Create final output files (.hex) from ELF output file.
 %.hex: %.elf
@@ -125,8 +144,8 @@ clean :
 	rm -f logfile
 
 
-# Automatically generate C source code dependencies. 
-# (Code originally taken from the GNU make user manual and modified (See README.txt Credits).)
+# Automatically generate C source code dependencies.
+# (Code originally taken from the GNU make user manual and modified (See README.txt Credits).
 # Note that this will work with sh (bash) and sed that is shipped with WinAVR (see the SHELL variable defined above).
 # This may not work with other shells or other seds.
 %.d: %.c
@@ -140,7 +159,8 @@ clean :
 
 
 # Listing of phony targets.
-.PHONY : all clean 
+.PHONY : all clean
 
 tags: *.[hc]
 	ctags *.[hc]
+

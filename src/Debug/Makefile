@@ -45,7 +45,7 @@ C_SRCS +=  \
 ../g_code.c \
 ../hpgl.c \
 ../keypad.c \
-../display_lcd.c \
+../display_oled.c \
 ../main.c \
 ../scale.c \
 ../serial.c \

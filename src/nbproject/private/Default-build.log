@@ -1,0 +1,36 @@
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   scale.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> scale.d; [ -s scale.d ] || rm -f scale.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   shvars.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> shvars.d; [ -s shvars.d ] || rm -f shvars.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   hpgl.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> hpgl.d; [ -s hpgl.d ] || rm -f hpgl.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   dial.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> dial.d; [ -s dial.d ] || rm -f dial.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   flash.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> flash.d; [ -s flash.d ] || rm -f flash.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   cli.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> cli.d; [ -s cli.d ] || rm -f cli.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   stepper.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> stepper.d; [ -s stepper.d ] || rm -f stepper.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   timer.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> timer.d; [ -s timer.d ] || rm -f timer.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   keypad.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> keypad.d; [ -s keypad.d ] || rm -f keypad.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   usb.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> usb.d; [ -s usb.d ] || rm -f usb.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   main.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> main.d; [ -s main.d ] || rm -f main.d
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   main.c -o main.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -fpack-struct  -fshort-enums -Wall -Werror -Wstrict-prototypes   usb.c -o usb.o
+make: *** No rule to make target 'lcd.o', needed by 'freecut.elf'.  Stop.
