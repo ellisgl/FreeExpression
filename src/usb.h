@@ -1,4 +1,4 @@
-/*
+/**
  * usb.h
  *
  * This file is part of FreeExpression.
@@ -21,11 +21,13 @@
 #define USB_H
 
 #include <stdio.h>
+
 #include "serial.h"
-void usb_init( void );
+
+void usb_init(void);
 int usb_haschar(void);
-void usb_putc( uint8_t c);
+void usb_putc(uint8_t c);
 uint8_t usb_getc(void);
-void usb_puts(const char *s );
+void usb_puts(const char *s);
 
 #endif

@@ -1,4 +1,4 @@
-/*
+/**
  * usb.c
  *
  * The USB port is a UART, connected to a FTDI chip. 
@@ -18,45 +18,37 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with FreeExpression. If not, see http://www.gnu.org/licenses/.
- *
  */
-
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <avr/wdt.h>
 #include <inttypes.h>
 #include <stdio.h>
+
 #include "usb.h"
 #include "serial.h"
 
-
-void usb_puts(const char *s )
-{
-      while (*s != '\0') {
-	      serial_write(*s++);
-      }
+void usb_puts(const char *s) {
+    while (*s != '\0') {
+        serial_write(*s++);
+    }
 }
 
-void usb_putc(uint8_t c)
-{	
-	 serial_write(c);
+void usb_putc(uint8_t c) {
+    serial_write(c);
 }
 
-uint8_t usb_getc()
-{
-	return serial_read();
+uint8_t usb_getc() {
+    return serial_read();
 }
 
-int usb_haschar(void)
-{
-	return serial_get_rx_buffer_count()>0;
+int usb_haschar(void) {
+    return serial_get_rx_buffer_count() > 0;
 }
 
-
-/*
+/**
  * initialize USB UART. Assume fixed baudrate of 115200, and default 8N1.
  */
-void usb_init( void ) 
-{
-	serial_init();
+void usb_init(void) {
+    serial_init();
 }
