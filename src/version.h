@@ -1,4 +1,4 @@
-/*
+/**
  * version.h
  *
  * This file is part of FreeExpression.
@@ -15,7 +15,5 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with FreeExpression. If not, see http://www.gnu.org/licenses/.
- *
  */
 #define VERSION "FreeExpression v0.3g"
-
