@@ -10,15 +10,15 @@
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
 ABS	avrlibdefs.h	/^#define ABS(/;"	d
-ACCEL_ACCEL	shvars.h	/^	ACCEL_ACCEL,			\/\/\/< Ramp speed up$/;"	e	enum:_acceleration_modes
-ACCEL_DECEL	shvars.h	/^	ACCEL_DECEL,			\/\/\/< Ramp speed down$/;"	e	enum:_acceleration_modes
-ACCEL_FIXFAST	shvars.h	/^	ACCEL_FIXFAST,			\/\/\/< Move fast, fastest possible speed$/;"	e	enum:_acceleration_modes
-ACCEL_FIXMEDIUM	shvars.h	/^	ACCEL_FIXMEDIUM,		\/\/\/< Fixed average speed$/;"	e	enum:_acceleration_modes
-ACCEL_FIXSLOW	shvars.h	/^	ACCEL_FIXSLOW = 0,		\/\/\/< Move slowly, fixed speed$/;"	e	enum:_acceleration_modes
+ACCEL_ACCEL	shvars.h	/^    ACCEL_ACCEL, \/\/\/< Ramp speed up$/;"	e	enum:_acceleration_modes
+ACCEL_DECEL	shvars.h	/^    ACCEL_DECEL, \/\/\/< Ramp speed down$/;"	e	enum:_acceleration_modes
+ACCEL_FIXFAST	shvars.h	/^    ACCEL_FIXFAST, \/\/\/< Move fast, fastest possible speed$/;"	e	enum:_acceleration_modes
+ACCEL_FIXMEDIUM	shvars.h	/^    ACCEL_FIXMEDIUM, \/\/\/< Fixed average speed$/;"	e	enum:_acceleration_modes
+ACCEL_FIXSLOW	shvars.h	/^    ACCEL_FIXSLOW = 0, \/\/\/< Move slowly, fixed speed$/;"	e	enum:_acceleration_modes
 ACCEL_MODE	shvars.h	/^} ACCEL_MODE;$/;"	t	typeref:enum:_acceleration_modes
 ACCEL_STEPS_RAMP	configs.h	/^#define ACCEL_STEPS_RAMP /;"	d
-ACCEL_XTHRESH1	configs.h	/^#define ACCEL_XTHRESH1	/;"	d
-ACCEL_XTHRESH2	configs.h	/^#define ACCEL_XTHRESH2	/;"	d
+ACCEL_XTHRESH1	configs.h	/^#define ACCEL_XTHRESH1 /;"	d
+ACCEL_XTHRESH2	configs.h	/^#define ACCEL_XTHRESH2 /;"	d
 AVRLIBDEFS_H	avrlibdefs.h	/^#define AVRLIBDEFS_H$/;"	d
 AVRLIBTYPES_H	avrlibtypes.h	/^#define AVRLIBTYPES_H$/;"	d
 ActionState	stepper.c	/^} ActionState;$/;"	v	typeref:enum:state	file:
@@ -27,91 +27,91 @@ BOOL	avrlibtypes.h	/^	typedef unsigned char   BOOL;$/;"	t	typeref:typename:unsig
 BV	avrlibdefs.h	/^	#define BV(/;"	d
 BYTE	avrlibtypes.h	/^	typedef unsigned char	BYTE;$/;"	t	typeref:typename:unsigned char
 CHAR	avrlibtypes.h	/^	typedef char			CHAR;$/;"	t	typeref:typename:char
-CLK	keypad.c	/^#define CLK	/;"	d	file:
+CLK	keypad.c	/^#define CLK /;"	d	file:
 CLK	keypad_expression.c	/^#define CLK /;"	d	file:
-CMD_ARCABS	hpgl.h	/^	CMD_ARCABS,			\/\/\/< Start arc absolute$/;"	e	enum:_hpgl_command
-CMD_AS	hpgl.h	/^	CMD_AS,				\/\/\/< Acceleration Select: 0 = no acceleration (nonstandard)$/;"	e	enum:_hpgl_command
-CMD_CONT	hpgl.h	/^	CMD_CONT = 0,		\/\/\/< Continue, do nothing (data coming)$/;"	e	enum:_hpgl_command
-CMD_DI	hpgl.h	/^	CMD_DI,				\/\/\/< Label direction: numpad[0]=sin(theta), numpad[1]=cos(theta)$/;"	e	enum:_hpgl_command
-CMD_ERR	hpgl.h	/^	CMD_ERR = -1,		\/\/\/< Error$/;"	e	enum:_hpgl_command
-CMD_FS	hpgl.h	/^	CMD_FS,				\/\/\/< Pen pressure (nonstandard??)$/;"	e	enum:_hpgl_command
-CMD_INIT	hpgl.h	/^	CMD_INIT,			\/\/\/< Initialize$/;"	e	enum:_hpgl_command
-CMD_LB	hpgl.h	/^	CMD_LB,				\/\/\/< Label text$/;"	e	enum:_hpgl_command
-CMD_LB0	hpgl.h	/^	CMD_LB0,			\/\/\/< Mark label start$/;"	e	enum:_hpgl_command
-CMD_PA	hpgl.h	/^	CMD_PA = 1,			\/\/\/< Move to returned coordinates$/;"	e	enum:_hpgl_command
-CMD_PD	hpgl.h	/^	CMD_PD,				\/\/\/< Pen down$/;"	e	enum:_hpgl_command
-CMD_PU	hpgl.h	/^	CMD_PU,				\/\/\/< Pen up$/;"	e	enum:_hpgl_command
+CMD_ARCABS	hpgl.h	/^    CMD_ARCABS, \/\/\/< Start arc absolute$/;"	e	enum:_hpgl_command
+CMD_AS	hpgl.h	/^    CMD_AS, \/\/\/< Acceleration Select: 0 = no acceleration (nonstandard)$/;"	e	enum:_hpgl_command
+CMD_CONT	hpgl.h	/^    CMD_CONT = 0, \/\/\/< Continue, do nothing (data coming)$/;"	e	enum:_hpgl_command
+CMD_DI	hpgl.h	/^    CMD_DI, \/\/\/< Label direction: numpad[0]=sin(theta), numpad[1]=cos(theta)$/;"	e	enum:_hpgl_command
+CMD_ERR	hpgl.h	/^    CMD_ERR = -1, \/\/\/< Error$/;"	e	enum:_hpgl_command
+CMD_FS	hpgl.h	/^    CMD_FS, \/\/\/< Pen pressure (nonstandard??)$/;"	e	enum:_hpgl_command
+CMD_INIT	hpgl.h	/^    CMD_INIT, \/\/\/< Initialize$/;"	e	enum:_hpgl_command
+CMD_LB	hpgl.h	/^    CMD_LB, \/\/\/< Label text$/;"	e	enum:_hpgl_command
+CMD_LB0	hpgl.h	/^    CMD_LB0, \/\/\/< Mark label start$/;"	e	enum:_hpgl_command
+CMD_PA	hpgl.h	/^    CMD_PA = 1, \/\/\/< Move to returned coordinates$/;"	e	enum:_hpgl_command
+CMD_PD	hpgl.h	/^    CMD_PD, \/\/\/< Pen down$/;"	e	enum:_hpgl_command
+CMD_PU	hpgl.h	/^    CMD_PU, \/\/\/< Pen up$/;"	e	enum:_hpgl_command
 CMD_QUEUE_SIZE	stepper.c	/^#define CMD_QUEUE_SIZE /;"	d	file:
-CMD_SEEK0	hpgl.h	/^	CMD_SEEK0,			\/\/\/< Locate home position$/;"	e	enum:_hpgl_command
-CMD_SI	hpgl.h	/^	CMD_SI,				\/\/\/< Absolute character size$/;"	e	enum:_hpgl_command
-CMD_SR	hpgl.h	/^	CMD_SR,				\/\/\/< Relative character size$/;"	e	enum:_hpgl_command
-CMD_VS	hpgl.h	/^	CMD_VS,				\/\/\/< Velocity Select: 0 = fastest (nonstandard)$/;"	e	enum:_hpgl_command
-CS	flash.c	/^#define CS	/;"	d	file:
+CMD_SEEK0	hpgl.h	/^    CMD_SEEK0, \/\/\/< Locate home position$/;"	e	enum:_hpgl_command
+CMD_SI	hpgl.h	/^    CMD_SI, \/\/\/< Absolute character size$/;"	e	enum:_hpgl_command
+CMD_SR	hpgl.h	/^    CMD_SR, \/\/\/< Relative character size$/;"	e	enum:_hpgl_command
+CMD_VS	hpgl.h	/^    CMD_VS, \/\/\/< Velocity Select: 0 = fastest (nonstandard)$/;"	e	enum:_hpgl_command
+CS	flash.c	/^#define CS /;"	d	file:
 CYCLES_PER_US	avrlib.h	/^#define CYCLES_PER_US /;"	d
 ChkBit	flash.h	/^#define ChkBit(/;"	d
 ClrBit	flash.h	/^#define ClrBit(/;"	d
-DATA	keypad.c	/^#define DATA	/;"	d	file:
+DATA	keypad.c	/^#define DATA /;"	d	file:
 DATA	keypad_expression.c	/^#define DATA /;"	d	file:
 DDR	avrlibdefs.h	/^#define DDR(/;"	d
 DEBUG_FLASH	configs.h	/^#define DEBUG_FLASH$/;"	d
 DEBUG_KEYBOARD	configs.h	/^#define DEBUG_KEYBOARD /;"	d
-DF_BLOCKERASE	flash.c	/^#define DF_BLOCKERASE	/;"	d	file:
-DF_CONTREAD	flash.c	/^#define DF_CONTREAD	/;"	d	file:
-DF_PAGEERASE	flash.c	/^#define DF_PAGEERASE	/;"	d	file:
-DF_PAGEPGM1	flash.c	/^#define DF_PAGEPGM1	/;"	d	file:
-DF_PAGEPGM2	flash.c	/^#define DF_PAGEPGM2	/;"	d	file:
-DF_READBUF1	flash.c	/^#define DF_READBUF1	/;"	d	file:
-DF_READBUF2	flash.c	/^#define DF_READBUF2	/;"	d	file:
-DF_READPAGE	flash.c	/^#define DF_READPAGE	/;"	d	file:
+DF_BLOCKERASE	flash.c	/^#define DF_BLOCKERASE /;"	d	file:
+DF_CONTREAD	flash.c	/^#define DF_CONTREAD /;"	d	file:
+DF_PAGEERASE	flash.c	/^#define DF_PAGEERASE /;"	d	file:
+DF_PAGEPGM1	flash.c	/^#define DF_PAGEPGM1 /;"	d	file:
+DF_PAGEPGM2	flash.c	/^#define DF_PAGEPGM2 /;"	d	file:
+DF_READBUF1	flash.c	/^#define DF_READBUF1 /;"	d	file:
+DF_READBUF2	flash.c	/^#define DF_READBUF2 /;"	d	file:
+DF_READPAGE	flash.c	/^#define DF_READPAGE /;"	d	file:
 DF_READY_FLAG	flash.c	/^#define DF_READY_FLAG /;"	d	file:
 DF_RESERVED_PAGES	flash.c	/^#define DF_RESERVED_PAGES /;"	d	file:
-DF_SECTORERASE	flash.c	/^#define DF_SECTORERASE	/;"	d	file:
+DF_SECTORERASE	flash.c	/^#define DF_SECTORERASE /;"	d	file:
 DF_STATUS	flash.c	/^#define DF_STATUS /;"	d	file:
-DF_TRFBUF1	flash.c	/^#define DF_TRFBUF1	/;"	d	file:
-DF_TRFBUF2	flash.c	/^#define DF_TRFBUF2	/;"	d	file:
-DF_WRITEBUF1	flash.c	/^#define DF_WRITEBUF1	/;"	d	file:
-DF_WRITEBUF2	flash.c	/^#define DF_WRITEBUF2	/;"	d	file:
-DF_WRITEPAGE1	flash.c	/^#define DF_WRITEPAGE1	/;"	d	file:
-DF_WRITEPAGE2	flash.c	/^#define DF_WRITEPAGE2	/;"	d	file:
-DF_WRITEPAGE2E	flash.c	/^#define DF_WRITEPAGE2E	/;"	d	file:
-DF_pagebits	flash.c	/^const uint8_t DF_pagebits[] PROGMEM ={9,  9,  9,  9,  9,  10,  10,  11};$/;"	v	typeref:typename:const uint8_t[]PROGMEM
-DF_pagesize	flash.c	/^const uint16_t DF_pagesize[] PROGMEM ={264,264, 264, 264, 264, 528, 528,1056};$/;"	v	typeref:typename:const uint16_t[]PROGMEM
+DF_TRFBUF1	flash.c	/^#define DF_TRFBUF1 /;"	d	file:
+DF_TRFBUF2	flash.c	/^#define DF_TRFBUF2 /;"	d	file:
+DF_WRITEBUF1	flash.c	/^#define DF_WRITEBUF1 /;"	d	file:
+DF_WRITEBUF2	flash.c	/^#define DF_WRITEBUF2 /;"	d	file:
+DF_WRITEPAGE1	flash.c	/^#define DF_WRITEPAGE1 /;"	d	file:
+DF_WRITEPAGE2	flash.c	/^#define DF_WRITEPAGE2 /;"	d	file:
+DF_WRITEPAGE2E	flash.c	/^#define DF_WRITEPAGE2E /;"	d	file:
+DF_pagebits	flash.c	/^const uint8_t DF_pagebits[] PROGMEM = {9, 9, 9, 9, 9, 10, 10, 11};$/;"	v	typeref:typename:const uint8_t[]PROGMEM
+DF_pagesize	flash.c	/^const uint16_t DF_pagesize[] PROGMEM = {264, 264, 264, 264, 264, 528, 528, 1056};$/;"	v	typeref:typename:const uint16_t[]PROGMEM
 DIALS_H	dial.h	/^#define DIALS_H$/;"	d
 DIAL_PRESSURE	dial.h	/^    DIAL_PRESSURE,$/;"	e	enum:__anonf8c5f3150103
-DIAL_SIZE	dial.h	/^    DIAL_SIZE =0,		\/\/ only on some machines this is a potentiometer, most have a quadrature en/;"	e	enum:__anonf8c5f3150103
+DIAL_SIZE	dial.h	/^    DIAL_SIZE = 0, \/\/ only on some machines this is a potentiometer, most have a quadrature en/;"	e	enum:__anonf8c5f3150103
 DIAL_SPEED	dial.h	/^    DIAL_SPEED,$/;"	e	enum:__anonf8c5f3150103
 DISPLAY_H_	display.h	/^#define DISPLAY_H_$/;"	d
 DISPLAY_OLED_H_	display_oled.h	/^#define DISPLAY_OLED_H_$/;"	d
 DPI	g_code.c	/^#define DPI /;"	d	file:
-DRAW	stepper.c	/^    DRAW,			\/\/ move with pen down$/;"	e	enum:type	file:
+DRAW	stepper.c	/^    DRAW, \/\/ move with pen down$/;"	e	enum:type	file:
 DWORD	avrlibtypes.h	/^	typedef unsigned long	DWORD;$/;"	t	typeref:typename:unsigned long
 ENABLE_XONXOFF	serial.h	/^#define ENABLE_XONXOFF$/;"	d
-F0	stepper.c	/^#define F0	/;"	d	file:
-F1	stepper.c	/^#define F1	/;"	d	file:
-F2	stepper.c	/^#define F2	/;"	d	file:
-F3	stepper.c	/^#define F3	/;"	d	file:
+F0	stepper.c	/^#define F0 /;"	d	file:
+F1	stepper.c	/^#define F1 /;"	d	file:
+F2	stepper.c	/^#define F2 /;"	d	file:
+F3	stepper.c	/^#define F3 /;"	d	file:
 FALSE	avrlibtypes.h	/^	#define FALSE	/;"	d
 FLASH_H	flash.h	/^#define FLASH_H$/;"	d
 F_CPU	avrlib.h	/^#define F_CPU /;"	d
 GLOBAL_H	avrlib.h	/^#define GLOBAL_H$/;"	d
 GNUC_PACKED	avrlibdefs.h	/^#define GNUC_PACKED /;"	d
-GPGL	keypad.h	/^	GPGL$/;"	e	enum:_languge
-G_CODE	keypad.h	/^	G_CODE,$/;"	e	enum:_languge
-H0	stepper.c	/^#define H0	/;"	d	file:
-H1	stepper.c	/^#define H1	/;"	d	file:
-H2	stepper.c	/^#define H2	/;"	d	file:
-H3	stepper.c	/^#define H3	/;"	d	file:
+GPGL	keypad.h	/^    GPGL$/;"	e	enum:_languge
+G_CODE	keypad.h	/^    G_CODE,$/;"	e	enum:_languge
+H0	stepper.c	/^#define H0 /;"	d	file:
+H1	stepper.c	/^#define H1 /;"	d	file:
+H2	stepper.c	/^#define H2 /;"	d	file:
+H3	stepper.c	/^#define H3 /;"	d	file:
 HOME	stepper.c	/^#define HOME /;"	d	file:
-HOME0	stepper.c	/^    HOME0=0,$/;"	e	enum:state	file:
-HOME1	stepper.c	/^    HOME1,			\/\/ homing until switch is pushed$/;"	e	enum:state	file:
-HOME2	stepper.c	/^    HOME2,			\/\/ reversing until switch is released$/;"	e	enum:state	file:
+HOME0	stepper.c	/^    HOME0 = 0,$/;"	e	enum:state	file:
+HOME1	stepper.c	/^    HOME1, \/\/ homing until switch is pushed$/;"	e	enum:state	file:
+HOME2	stepper.c	/^    HOME2, \/\/ reversing until switch is released$/;"	e	enum:state	file:
 HOME_Y_LEAD	stepper.c	/^#define HOME_Y_LEAD /;"	d	file:
-HPGL	keypad.h	/^	HPGL=1,$/;"	e	enum:_languge
+HPGL	keypad.h	/^    HPGL = 1,$/;"	e	enum:_languge
 INT	avrlibtypes.h	/^	typedef int				INT;$/;"	t	typeref:typename:int
-ISR	serial.c	/^ISR(UART1_RECEIVE_INTERRUPT)$/;"	f
-ISR	serial.c	/^ISR(UART1_TRANSMIT_INTERRUPT)$/;"	f
-ISR	timer.c	/^ISR( TIMER0_COMPA_vect ) $/;"	f
-ISR	timer.c	/^ISR( TIMER2_COMPA_vect ) $/;"	f
+ISR	serial.c	/^ISR(UART1_RECEIVE_INTERRUPT) {$/;"	f
+ISR	serial.c	/^ISR(UART1_TRANSMIT_INTERRUPT) {$/;"	f
+ISR	timer.c	/^ISR(TIMER0_COMPA_vect) {$/;"	f
+ISR	timer.c	/^ISR(TIMER2_COMPA_vect) {$/;"	f
 KBD_MAX_COLS	keypad_expression.h	/^#define KBD_MAX_COLS /;"	d
 KBD_MAX_ROWS	keypad_expression.h	/^#define KBD_MAX_ROWS /;"	d
 KEYPAD_0	keypad_expression.h	/^    KEYPAD_0 = 11,$/;"	e	enum:__anon9b0f01880103
@@ -210,12 +210,12 @@ KEYPAD_XTRA2	keypad_expression.h	/^    KEYPAD_XTRA2 = 43,$/;"	e	enum:__anon9b0f0
 KEYPAD_Y	keypad_expression.h	/^    KEYPAD_Y = 31,$/;"	e	enum:__anon9b0f01880103
 KEYPAD_Z	keypad_expression.h	/^    KEYPAD_Z = 74,$/;"	e	enum:__anon9b0f01880103
 KEYS	keypad_expression.h	/^} KEYS;$/;"	v	typeref:enum:__anon9b0f01880103
-LEDS	keypad.c	/^#define LEDS	/;"	d	file:
+LEDS	keypad.c	/^#define LEDS /;"	d	file:
 LEDS	keypad_expression.c	/^#define LEDS /;"	d	file:
-LINE	stepper.c	/^    LINE			\/\/ draw straight line$/;"	e	enum:state	file:
+LINE	stepper.c	/^    LINE \/\/ draw straight line$/;"	e	enum:state	file:
 LONG	avrlibtypes.h	/^	typedef long			LONG;$/;"	t	typeref:typename:long
-Lang	keypad.c	/^en_language Lang = HPGL;	$/;"	v	typeref:typename:en_language
-MAT_EDGE	stepper.c	/^#define MAT_EDGE	/;"	d	file:
+Lang	keypad.c	/^en_language Lang = HPGL;$/;"	v	typeref:typename:en_language
+MAT_EDGE	stepper.c	/^#define MAT_EDGE /;"	d	file:
 MAX	avrlibdefs.h	/^#define MAX(/;"	d
 MAX_CUTTER_P_RANGES	stepper.h	/^#define MAX_CUTTER_P_RANGES /;"	d
 MAX_DIALS	dial.h	/^    MAX_DIALS$/;"	e	enum:__anonf8c5f3150103
@@ -227,90 +227,90 @@ MAX_STEPPER_SPEED_RANGES	stepper.h	/^#define MAX_STEPPER_SPEED_RANGES /;"	d
 MAX_U08	avrlibtypes.h	/^#define MAX_U08	/;"	d
 MAX_U16	avrlibtypes.h	/^#define MAX_U16	/;"	d
 MAX_U32	avrlibtypes.h	/^#define MAX_U32	/;"	d
-MAX_X	stepper.c	/^#define MAX_X	/;"	d	file:
-MAX_Y	stepper.c	/^#define MAX_Y	/;"	d	file:
+MAX_X	stepper.c	/^#define MAX_X /;"	d	file:
+MAX_Y	stepper.c	/^#define MAX_Y /;"	d	file:
 MIN	avrlibdefs.h	/^#define MIN(/;"	d
 MIN_PEN_PWM	stepper.h	/^#define MIN_PEN_PWM /;"	d
 MIN_S08	avrlibtypes.h	/^#define MIN_S08	/;"	d
 MIN_S16	avrlibtypes.h	/^#define MIN_S16	/;"	d
 MIN_S32	avrlibtypes.h	/^#define MIN_S32	/;"	d
-MISO	flash.c	/^#define MISO	/;"	d	file:
+MISO	flash.c	/^#define MISO /;"	d	file:
 MOSI	flash.c	/^#define MOSI /;"	d	file:
 MOTOR_OFF_DEL	stepper.c	/^#define MOTOR_OFF_DEL /;"	d	file:
 MOTOR_PACE_FASTX	configs.h	/^#define MOTOR_PACE_FASTX /;"	d
 MOTOR_PACE_FASTY	configs.h	/^#define MOTOR_PACE_FASTY /;"	d
 MOTOR_PACE_SLOW	configs.h	/^#define MOTOR_PACE_SLOW /;"	d
-MOVE	stepper.c	/^    MOVE,			\/\/ move with pen up $/;"	e	enum:type	file:
-NO_MAD_ACCEL	configs.h	/^#define NO_MAD_ACCEL	/;"	d
-NO_SLOW_QUALITY	configs.h	/^#define NO_SLOW_QUALITY	/;"	d
-NO_YSKIPPY	configs.h	/^#define NO_YSKIPPY	/;"	d
-PEN	stepper.c	/^#define PEN	/;"	d	file:
+MOVE	stepper.c	/^    MOVE, \/\/ move with pen up $/;"	e	enum:type	file:
+NO_MAD_ACCEL	configs.h	/^#define NO_MAD_ACCEL /;"	d
+NO_SLOW_QUALITY	configs.h	/^#define NO_SLOW_QUALITY /;"	d
+NO_YSKIPPY	configs.h	/^#define NO_YSKIPPY /;"	d
+PEN	stepper.c	/^#define PEN /;"	d	file:
 PI	avrlibdefs.h	/^#define PI	/;"	d
 PIN	avrlibdefs.h	/^#define PIN(/;"	d
-PRESSURE	stepper.c	/^    PRESSURE,			\/\/ set pressure $/;"	e	enum:type	file:
-PROCESS_LINE	g_code.c	/^	PROCESS_LINE$/;"	e	enum:_en_gcode_state	file:
-READY	stepper.c	/^    READY,			\/\/ motor off, pen up$/;"	e	enum:state	file:
+PRESSURE	stepper.c	/^    PRESSURE, \/\/ set pressure $/;"	e	enum:type	file:
+PROCESS_LINE	g_code.c	/^    PROCESS_LINE$/;"	e	enum:_en_gcode_state	file:
+READY	stepper.c	/^    READY, \/\/ motor off, pen up$/;"	e	enum:state	file:
 ROWS	keypad.c	/^#define ROWS /;"	d	file:
 ROWS	keypad_expression.c	/^#define ROWS /;"	d	file:
-RX_BUFFER_FULL	serial.h	/^  #define RX_BUFFER_FULL /;"	d
-RX_BUFFER_LOW	serial.h	/^  #define RX_BUFFER_LOW /;"	d
-RX_BUFFER_SIZE	serial.h	/^  #define RX_BUFFER_SIZE /;"	d
-SCK	flash.c	/^#define SCK	/;"	d	file:
+RX_BUFFER_FULL	serial.h	/^#define RX_BUFFER_FULL /;"	d
+RX_BUFFER_LOW	serial.h	/^#define RX_BUFFER_LOW /;"	d
+RX_BUFFER_SIZE	serial.h	/^#define RX_BUFFER_SIZE /;"	d
+SCK	flash.c	/^#define SCK /;"	d	file:
 SCRATCHPAD_SIZE	shvars.h	/^#define SCRATCHPAD_SIZE /;"	d
-SEND_XOFF	serial.h	/^  #define SEND_XOFF /;"	d
-SEND_XON	serial.h	/^  #define SEND_XON /;"	d
+SEND_XOFF	serial.h	/^#define SEND_XOFF /;"	d
+SEND_XON	serial.h	/^#define SEND_XON /;"	d
 SERIAL_NO_DATA	serial.h	/^#define SERIAL_NO_DATA /;"	d
-SIGNAL	spi.c	/^SIGNAL(SIG_SPI)$/;"	f
+SIGNAL	spi.c	/^SIGNAL(SIG_SPI) {$/;"	f
 SIZE_WHEEL_IS_POTENTIOMETER	configs.h	/^#define SIZE_WHEEL_IS_POTENTIOMETER$/;"	d
-SKIP_COMMENT	g_code.c	/^	SKIP_COMMENT,$/;"	e	enum:_en_gcode_state	file:
-SLEEP_COUNTER	configs.h	/^#define SLEEP_COUNTER	/;"	d
-SLEEP_PERIOD	configs.h	/^#define SLEEP_PERIOD	/;"	d
-SPEED	stepper.c	/^    SPEED,			\/\/ set speed$/;"	e	enum:type	file:
-SPEED_SKIP	configs.h	/^#define SPEED_SKIP	/;"	d
+SKIP_COMMENT	g_code.c	/^    SKIP_COMMENT,$/;"	e	enum:_en_gcode_state	file:
+SLEEP_COUNTER	configs.h	/^#define SLEEP_COUNTER /;"	d
+SLEEP_PERIOD	configs.h	/^#define SLEEP_PERIOD /;"	d
+SPEED	stepper.c	/^    SPEED, \/\/ set speed$/;"	e	enum:type	file:
+SPEED_SKIP	configs.h	/^#define SPEED_SKIP /;"	d
 SPI_H	spi.h	/^#define SPI_H$/;"	d
-STATE_ARC	hpgl.h	/^	STATE_ARC,			\/\/\/< Arc$/;"	e	enum:_scanner_state
-STATE_AS	hpgl.h	/^	STATE_AS,			\/\/\/< Acceleration Select (nonstandard: 0\/1)$/;"	e	enum:_scanner_state
-STATE_DI	hpgl.h	/^	STATE_DI,			\/\/\/< label direction$/;"	e	enum:_scanner_state
-STATE_DT	hpgl.h	/^	STATE_DT,			\/\/\/< label terminator char$/;"	e	enum:_scanner_state
-STATE_EXP1	hpgl.h	/^	STATE_EXP1 = 0,		\/\/\/< Expect first char of a command$/;"	e	enum:_scanner_state
-STATE_EXP4	hpgl.h	/^	STATE_EXP4,			\/\/\/< Expect 4 numbers (like for AA, IP, SC)$/;"	e	enum:_scanner_state
-STATE_EXP_A	hpgl.h	/^	STATE_EXP_A,$/;"	e	enum:_scanner_state
-STATE_EXP_D	hpgl.h	/^	STATE_EXP_D,$/;"	e	enum:_scanner_state
-STATE_EXP_F	hpgl.h	/^	STATE_EXP_F,$/;"	e	enum:_scanner_state
-STATE_EXP_I	hpgl.h	/^	STATE_EXP_I,$/;"	e	enum:_scanner_state
-STATE_EXP_L	hpgl.h	/^	STATE_EXP_L,$/;"	e	enum:_scanner_state
-STATE_EXP_P	hpgl.h	/^	STATE_EXP_P,$/;"	e	enum:_scanner_state
-STATE_EXP_S	hpgl.h	/^	STATE_EXP_S,$/;"	e	enum:_scanner_state
-STATE_EXP_V	hpgl.h	/^	STATE_EXP_V,$/;"	e	enum:_scanner_state
-STATE_FS	hpgl.h	/^	STATE_FS,			\/\/\/< Set pressure$/;"	e	enum:_scanner_state
-STATE_IP	hpgl.h	/^	STATE_IP,			\/\/\/< Coordinates$/;"	e	enum:_scanner_state
-STATE_LB	hpgl.h	/^	STATE_LB,			\/\/\/< Label text$/;"	e	enum:_scanner_state
-STATE_SC	hpgl.h	/^	STATE_SC,			\/\/\/< Scale$/;"	e	enum:_scanner_state
-STATE_SI	hpgl.h	/^	STATE_SI,			\/\/\/< absolute character size in cm$/;"	e	enum:_scanner_state
-STATE_SKIP_END	hpgl.h	/^	STATE_SKIP_END,		\/\/\/< Skip all until semicolon$/;"	e	enum:_scanner_state
-STATE_SP	hpgl.h	/^	STATE_SP,			\/\/\/< Select pen$/;"	e	enum:_scanner_state
-STATE_SR	hpgl.h	/^	STATE_SR,			\/\/\/< relative character size$/;"	e	enum:_scanner_state
-STATE_VS	hpgl.h	/^	STATE_VS,			\/\/\/< Velocity Select (nonstandard: value = skip steps, the more the slower)$/;"	e	enum:_scanner_state
-STATE_X	hpgl.h	/^	STATE_X,$/;"	e	enum:_scanner_state
-STATE_Y	hpgl.h	/^	STATE_Y,$/;"	e	enum:_scanner_state
+STATE_ARC	hpgl.h	/^    STATE_ARC, \/\/\/< Arc$/;"	e	enum:_scanner_state
+STATE_AS	hpgl.h	/^    STATE_AS, \/\/\/< Acceleration Select (nonstandard: 0\/1)$/;"	e	enum:_scanner_state
+STATE_DI	hpgl.h	/^    STATE_DI, \/\/\/< label direction$/;"	e	enum:_scanner_state
+STATE_DT	hpgl.h	/^    STATE_DT, \/\/\/< label terminator char$/;"	e	enum:_scanner_state
+STATE_EXP1	hpgl.h	/^    STATE_EXP1 = 0, \/\/\/< Expect first char of a command$/;"	e	enum:_scanner_state
+STATE_EXP4	hpgl.h	/^    STATE_EXP4, \/\/\/< Expect 4 numbers (like for AA, IP, SC)$/;"	e	enum:_scanner_state
+STATE_EXP_A	hpgl.h	/^    STATE_EXP_A,$/;"	e	enum:_scanner_state
+STATE_EXP_D	hpgl.h	/^    STATE_EXP_D,$/;"	e	enum:_scanner_state
+STATE_EXP_F	hpgl.h	/^    STATE_EXP_F,$/;"	e	enum:_scanner_state
+STATE_EXP_I	hpgl.h	/^    STATE_EXP_I,$/;"	e	enum:_scanner_state
+STATE_EXP_L	hpgl.h	/^    STATE_EXP_L,$/;"	e	enum:_scanner_state
+STATE_EXP_P	hpgl.h	/^    STATE_EXP_P,$/;"	e	enum:_scanner_state
+STATE_EXP_S	hpgl.h	/^    STATE_EXP_S,$/;"	e	enum:_scanner_state
+STATE_EXP_V	hpgl.h	/^    STATE_EXP_V,$/;"	e	enum:_scanner_state
+STATE_FS	hpgl.h	/^    STATE_FS, \/\/\/< Set pressure$/;"	e	enum:_scanner_state
+STATE_IP	hpgl.h	/^    STATE_IP, \/\/\/< Coordinates$/;"	e	enum:_scanner_state
+STATE_LB	hpgl.h	/^    STATE_LB, \/\/\/< Label text$/;"	e	enum:_scanner_state
+STATE_SC	hpgl.h	/^    STATE_SC, \/\/\/< Scale$/;"	e	enum:_scanner_state
+STATE_SI	hpgl.h	/^    STATE_SI, \/\/\/< absolute character size in cm$/;"	e	enum:_scanner_state
+STATE_SKIP_END	hpgl.h	/^    STATE_SKIP_END, \/\/\/< Skip all until semicolon$/;"	e	enum:_scanner_state
+STATE_SP	hpgl.h	/^    STATE_SP, \/\/\/< Select pen$/;"	e	enum:_scanner_state
+STATE_SR	hpgl.h	/^    STATE_SR, \/\/\/< relative character size$/;"	e	enum:_scanner_state
+STATE_VS	hpgl.h	/^    STATE_VS, \/\/\/< Velocity Select (nonstandard: value = skip steps, the more the slower)$/;"	e	enum:_scanner_state
+STATE_X	hpgl.h	/^    STATE_X,$/;"	e	enum:_scanner_state
+STATE_Y	hpgl.h	/^    STATE_Y,$/;"	e	enum:_scanner_state
 STEPPER_COORD	shvars.h	/^typedef int16_t STEPPER_COORD;$/;"	t	typeref:typename:int16_t
 STEPPER_H	stepper.h	/^#define STEPPER_H$/;"	d
 STEPPER_POINT	shvars.h	/^} STEPPER_POINT;$/;"	t	typeref:struct:_stepper_xy
 STEPSCALE_X	configs.h	/^#define STEPSCALE_X /;"	d
 STEPSCALE_Y	configs.h	/^#define STEPSCALE_Y /;"	d
-STOP	keypad.c	/^#define STOP	/;"	d	file:
+STOP	keypad.c	/^#define STOP /;"	d	file:
 STOP	keypad_expression.c	/^#define STOP /;"	d	file:
 SetBit	flash.h	/^#define SetBit(/;"	d
-StepperPhaseTable	stepper.c	/^static uint8_t StepperPhaseTable[] = $/;"	v	typeref:typename:uint8_t[]	file:
+StepperPhaseTable	stepper.c	/^static uint8_t StepperPhaseTable[] = {$/;"	v	typeref:typename:uint8_t[]	file:
 TIMER_H	timer.h	/^#define TIMER_H$/;"	d
 TRUE	avrlibtypes.h	/^	#define TRUE	/;"	d
-TX_BUFFER_SIZE	serial.h	/^  #define TX_BUFFER_SIZE /;"	d
-UART1_CONTROL	serial.h	/^  #define UART1_CONTROL /;"	d
-UART1_DATA	serial.h	/^  #define UART1_DATA /;"	d
-UART1_RECEIVE_INTERRUPT	serial.h	/^  #define UART1_RECEIVE_INTERRUPT /;"	d
-UART1_STATUS	serial.h	/^  #define UART1_STATUS /;"	d
-UART1_TRANSMIT_INTERRUPT	serial.h	/^  #define UART1_TRANSMIT_INTERRUPT /;"	d
-UART1_UDRIE	serial.h	/^  #define UART1_UDRIE /;"	d
+TX_BUFFER_SIZE	serial.h	/^#define TX_BUFFER_SIZE /;"	d
+UART1_CONTROL	serial.h	/^#define UART1_CONTROL /;"	d
+UART1_DATA	serial.h	/^#define UART1_DATA /;"	d
+UART1_RECEIVE_INTERRUPT	serial.h	/^#define UART1_RECEIVE_INTERRUPT /;"	d
+UART1_STATUS	serial.h	/^#define UART1_STATUS /;"	d
+UART1_TRANSMIT_INTERRUPT	serial.h	/^#define UART1_TRANSMIT_INTERRUPT /;"	d
+UART1_UDRIE	serial.h	/^#define UART1_UDRIE /;"	d
 UCHAR	avrlibtypes.h	/^	typedef unsigned char	UCHAR;$/;"	t	typeref:typename:unsigned char
 UINT	avrlibtypes.h	/^	typedef unsigned int	UINT;$/;"	t	typeref:typename:unsigned int
 ULONG	avrlibtypes.h	/^	typedef unsigned long	ULONG;$/;"	t	typeref:typename:unsigned long
@@ -319,17 +319,17 @@ USER_COORD	shvars.h	/^typedef double USER_COORD;$/;"	t	typeref:typename:double
 USER_POINT	shvars.h	/^} USER_POINT;$/;"	t	typeref:struct:_user_xy
 USHORT	avrlibtypes.h	/^	typedef unsigned short  USHORT;$/;"	t	typeref:typename:unsigned short
 VERSION	version.h	/^#define VERSION /;"	d
-WAIT_FOR_CMD	g_code.c	/^	WAIT_FOR_CMD =1,$/;"	e	enum:_en_gcode_state	file:
-WAIT_FOR_G	g_code.c	/^	WAIT_FOR_G,$/;"	e	enum:_en_gcode_state	file:
-WAIT_FOR_M	g_code.c	/^	WAIT_FOR_M,$/;"	e	enum:_en_gcode_state	file:
-WAIT_FOR_X	g_code.c	/^	WAIT_FOR_X,$/;"	e	enum:_en_gcode_state	file:
-WAIT_FOR_Y	g_code.c	/^	WAIT_FOR_Y,$/;"	e	enum:_en_gcode_state	file:
-WAIT_FOR_Z	g_code.c	/^	WAIT_FOR_Z,$/;"	e	enum:_en_gcode_state	file:
+WAIT_FOR_CMD	g_code.c	/^    WAIT_FOR_CMD = 1,$/;"	e	enum:_en_gcode_state	file:
+WAIT_FOR_G	g_code.c	/^    WAIT_FOR_G,$/;"	e	enum:_en_gcode_state	file:
+WAIT_FOR_M	g_code.c	/^    WAIT_FOR_M,$/;"	e	enum:_en_gcode_state	file:
+WAIT_FOR_X	g_code.c	/^    WAIT_FOR_X,$/;"	e	enum:_en_gcode_state	file:
+WAIT_FOR_Y	g_code.c	/^    WAIT_FOR_Y,$/;"	e	enum:_en_gcode_state	file:
+WAIT_FOR_Z	g_code.c	/^    WAIT_FOR_Z,$/;"	e	enum:_en_gcode_state	file:
 WORD	avrlibtypes.h	/^	typedef unsigned int	WORD;$/;"	t	typeref:typename:unsigned int
-XOFF_CHAR	serial.h	/^  #define XOFF_CHAR /;"	d
-XOFF_SENT	serial.h	/^  #define XOFF_SENT /;"	d
-XON_CHAR	serial.h	/^  #define XON_CHAR /;"	d
-XON_SENT	serial.h	/^  #define XON_SENT /;"	d
+XOFF_CHAR	serial.h	/^#define XOFF_CHAR /;"	d
+XOFF_SENT	serial.h	/^#define XOFF_SENT /;"	d
+XON_CHAR	serial.h	/^#define XON_CHAR /;"	d
+XON_SENT	serial.h	/^#define XON_SENT /;"	d
 _CONFIGS_H	configs.h	/^#define _CONFIGS_H$/;"	d
 _GCODE_H	g_code.h	/^#define _GCODE_H$/;"	d
 _HPGL_H	hpgl.h	/^#define _HPGL_H$/;"	d
@@ -337,10 +337,10 @@ _KEYPAD_EXPRESSION_H	keypad_expression.h	/^#define _KEYPAD_EXPRESSION_H$/;"	d
 _SCALE_H	scale.h	/^#define _SCALE_H$/;"	d
 _SHVARS_H	shvars.h	/^#define _SHVARS_H$/;"	d
 __anon9b0f01880103	keypad_expression.h	/^enum {$/;"	g
-__anonf8c5f3150103	dial.h	/^{ $/;"	g
+__anonf8c5f3150103	dial.h	/^enum {$/;"	g
 _acceleration_modes	shvars.h	/^typedef enum _acceleration_modes {$/;"	g
 _beep	keypad.c	/^void _beep(int key) {$/;"	f	typeref:typename:void
-_en_gcode_state	g_code.c	/^typedef enum _en_gcode_state $/;"	g	file:
+_en_gcode_state	g_code.c	/^typedef enum _en_gcode_state {$/;"	g	file:
 _hpgl_command	hpgl.h	/^enum _hpgl_command {$/;"	g
 _languge	keypad.h	/^typedef enum _languge {$/;"	g
 _oled_display_pressure	display_oled.c	/^void _oled_display_pressure(void) {$/;"	f	typeref:typename:void
@@ -348,29 +348,29 @@ _oled_display_speed	display_oled.c	/^void _oled_display_speed(void) {$/;"	f	type
 _scanner_state	hpgl.h	/^enum _scanner_state {$/;"	g
 _stepper_xy	shvars.h	/^typedef struct _stepper_xy {$/;"	s
 _user_xy	shvars.h	/^typedef struct _user_xy {$/;"	s
-action_type	stepper.c	/^    enum type action_type;		\/\/ command type,$/;"	m	struct:cmd	typeref:enum:type	file:
-alloc_cmd	stepper.c	/^static struct cmd *  alloc_cmd( uint8_t type )$/;"	f	typeref:struct:cmd *	file:
+action_type	stepper.c	/^    enum type action_type; \/\/ command type,$/;"	m	struct:cmd	typeref:enum:type	file:
+alloc_cmd	stepper.c	/^static struct cmd * alloc_cmd(uint8_t type) {$/;"	f	typeref:struct:cmd *	file:
 at_home	stepper.c	/^#define at_home(/;"	d	file:
 b	stepper.c	/^} b;$/;"	v	typeref:struct:bresenham
-beep	timer.c	/^void beep()$/;"	f	typeref:typename:void
-beeper_off	timer.c	/^void beeper_off( void )$/;"	f	typeref:typename:void
-beeper_on	timer.c	/^void beeper_on( int Hz )$/;"	f	typeref:typename:void
-borderflags	shvars.c	/^uint8_t	borderflags;	\/\/\/< Margin flags: MSB [0 0  ZINF ZSUP YINF YSUP XINF XSUP] LSB$/;"	v	typeref:typename:uint8_t
-bresenham	stepper.c	/^static struct bresenham$/;"	s	file:
-bresenham_init	stepper.c	/^static void bresenham_init( int x1, int y1 )$/;"	f	typeref:typename:void	file:
-bresenham_step	stepper.c	/^static enum state  bresenham_step( void )$/;"	f	typeref:enum:state	file:
+beep	timer.c	/^void beep() {$/;"	f	typeref:typename:void
+beeper_off	timer.c	/^void beeper_off(void) {$/;"	f	typeref:typename:void
+beeper_on	timer.c	/^void beeper_on(int Hz) {$/;"	f	typeref:typename:void
+borderflags	shvars.c	/^uint8_t borderflags; \/\/\/< Margin flags: MSB [0 0  ZINF ZSUP YINF YSUP XINF XSUP] LSB$/;"	v	typeref:typename:uint8_t
+bresenham	stepper.c	/^static struct bresenham {$/;"	s	file:
+bresenham_init	stepper.c	/^static void bresenham_init(int x1, int y1) {$/;"	f	typeref:typename:void	file:
+bresenham_step	stepper.c	/^static enum state bresenham_step(void) {$/;"	f	typeref:enum:state	file:
 bufferNumber	flash.c	/^static unsigned char bufferNumber = 1;$/;"	v	typeref:typename:unsigned char	file:
 byteCounter	flash.c	/^static unsigned int byteCounter = 0;$/;"	v	typeref:typename:unsigned int	file:
 cbi	avrlibdefs.h	/^	#define cbi(/;"	d
 channel	dial.c	/^static uint8_t channel = 0;$/;"	v	typeref:typename:uint8_t	file:
 cli	avrlibdefs.h	/^	#define cli(/;"	d
 cli_h	cli.h	/^#define cli_h$/;"	d
-cli_poll	cli.c	/^void cli_poll(void)$/;"	f	typeref:typename:void
+cli_poll	cli.c	/^void cli_poll(void) {$/;"	f	typeref:typename:void
 clk_h	keypad.c	/^#define clk_h(/;"	d	file:
 clk_h	keypad_expression.c	/^#define clk_h(/;"	d	file:
 clk_l	keypad.c	/^#define clk_l(/;"	d	file:
 clk_l	keypad_expression.c	/^#define clk_l(/;"	d	file:
-cmd	stepper.c	/^struct cmd$/;"	s	file:
+cmd	stepper.c	/^struct cmd {$/;"	s	file:
 cmd_head	stepper.c	/^static volatile uint8_t cmd_head, cmd_tail;$/;"	v	typeref:typename:volatile uint8_t	file:
 cmd_queue	stepper.c	/^} cmd_queue[CMD_QUEUE_SIZE];$/;"	v	typeref:struct:cmd[]
 cmd_tail	stepper.c	/^static volatile uint8_t cmd_head, cmd_tail;$/;"	v	typeref:typename:volatile uint8_t	file:
@@ -380,53 +380,53 @@ cs_high	flash.c	/^#define cs_high(/;"	d	file:
 cs_low	flash.c	/^#define cs_low(/;"	d	file:
 cur_x	display_oled.c	/^static uint8_t cur_x = 0, cur_y = 0;$/;"	v	typeref:typename:uint8_t	file:
 cur_y	display_oled.c	/^static uint8_t cur_x = 0, cur_y = 0;$/;"	v	typeref:typename:uint8_t	file:
-current_pen_pressure	timer.c	/^static int current_pen_pressure; $/;"	v	typeref:typename:int	file:
-current_stepper_speed	timer.c	/^static int current_stepper_speed; $/;"	v	typeref:typename:int	file:
+current_pen_pressure	timer.c	/^static int current_pen_pressure;$/;"	v	typeref:typename:int	file:
+current_stepper_speed	timer.c	/^static int current_stepper_speed;$/;"	v	typeref:typename:int	file:
 data_h	keypad.c	/^#define data_h(/;"	d	file:
 data_h	keypad_expression.c	/^#define data_h(/;"	d	file:
 data_l	keypad.c	/^#define data_l(/;"	d	file:
 data_l	keypad_expression.c	/^#define data_l(/;"	d	file:
-delta	stepper.c	/^    int delta;			\/\/ number of steps in other direction $/;"	m	struct:bresenham	typeref:typename:int	file:
+delta	stepper.c	/^    int delta; \/\/ number of steps in other direction $/;"	m	struct:bresenham	typeref:typename:int	file:
 dial_adc	dial.c	/^static unsigned char dial_adc[MAX_DIALS];$/;"	v	typeref:typename:unsigned char[]	file:
-dial_init	dial.c	/^void dial_init( void )$/;"	f	typeref:typename:void
-dial_poll	dial.c	/^void dial_poll( void )$/;"	f	typeref:typename:void
-dial_setting	dial.c	/^static int dial_setting( uint8_t dial )$/;"	f	typeref:typename:int	file:
-dial_steps	dial.c	/^static unsigned char dial_steps[MAX_DIALS] = { 25, 5, 5 }; \/\/ weak association !! should use s/;"	v	typeref:typename:unsigned char[]	file:
+dial_init	dial.c	/^void dial_init(void) {$/;"	f	typeref:typename:void
+dial_poll	dial.c	/^void dial_poll(void) {$/;"	f	typeref:typename:void
+dial_setting	dial.c	/^static int dial_setting(uint8_t dial) {$/;"	f	typeref:typename:int	file:
+dial_steps	dial.c	/^static unsigned char dial_steps[MAX_DIALS] = {25, 5, 5}; \/\/ weak association !! should use str/;"	v	typeref:typename:unsigned char[]	file:
 display_init	display.c	/^void display_init(void) {$/;"	f	typeref:typename:void
 display_message	display_oled.c	/^char display_message[80]; \/\/ 4 lines of 20 chars??$/;"	v	typeref:typename:char[80]
 display_print	display.c	/^void display_print(char *s) {$/;"	f	typeref:typename:void
 display_println	display.c	/^void display_println(char *s) {$/;"	f	typeref:typename:void
 display_puts	display.c	/^void display_puts(char *s) {$/;"	f	typeref:typename:void
 display_update	display.c	/^void display_update(void) {$/;"	f	typeref:typename:void
-do_next_command	stepper.c	/^enum state do_next_command( void )$/;"	f	typeref:enum:state
-dx	g_code.c	/^STEPPER_COORD  dx = 0;$/;"	v	typeref:typename:STEPPER_COORD
-dx	stepper.c	/^    int dx;				\/\/ x step direction$/;"	m	struct:bresenham	typeref:typename:int	file:
-dy	g_code.c	/^STEPPER_COORD  dy = 0;$/;"	v	typeref:typename:STEPPER_COORD
-dy	stepper.c	/^    int dy;				\/\/ y step direction$/;"	m	struct:bresenham	typeref:typename:int	file:
+do_next_command	stepper.c	/^enum state do_next_command(void) {$/;"	f	typeref:enum:state
+dx	g_code.c	/^STEPPER_COORD dx = 0;$/;"	v	typeref:typename:STEPPER_COORD
+dx	stepper.c	/^    int dx; \/\/ x step direction$/;"	m	struct:bresenham	typeref:typename:int	file:
+dy	g_code.c	/^STEPPER_COORD dy = 0;$/;"	v	typeref:typename:STEPPER_COORD
+dy	stepper.c	/^    int dy; \/\/ y step direction$/;"	m	struct:bresenham	typeref:typename:int	file:
 en_gcode_state	g_code.c	/^} en_gcode_state;$/;"	t	typeref:enum:_en_gcode_state	file:
 en_language	keypad.h	/^} en_language;$/;"	t	typeref:enum:_languge
-error	stepper.c	/^    int error;			\/\/ residual error$/;"	m	struct:bresenham	typeref:typename:int	file:
-etxchar	hpgl.c	/^uint8_t etxchar;			\/\/\/< End of text, default ^C$/;"	v	typeref:typename:uint8_t
+error	stepper.c	/^    int error; \/\/ residual error$/;"	m	struct:bresenham	typeref:typename:int	file:
+etxchar	hpgl.c	/^uint8_t etxchar; \/\/\/< End of text, default ^C$/;"	v	typeref:typename:uint8_t
 flag_25Hz	timer.c	/^volatile uint8_t flag_25Hz;$/;"	v	typeref:typename:volatile uint8_t
 flag_Hz	timer.c	/^volatile uint8_t flag_Hz;$/;"	v	typeref:typename:volatile uint8_t
-flash_buffer_to_page	flash.c	/^static void flash_buffer_to_page(unsigned char bufferNo, unsigned int pageNo)$/;"	f	typeref:typename:void	file:
-flash_flush	flash.c	/^void flash_flush(void)$/;"	f	typeref:typename:void
-flash_init	flash.c	/^void flash_init( void )$/;"	f	typeref:typename:void
-flash_read_byte	flash.c	/^static uint8_t flash_read_byte( void )$/;"	f	typeref:typename:uint8_t	file:
-flash_read_next_byte	flash.c	/^uint8_t flash_read_next_byte( void )$/;"	f	typeref:typename:uint8_t
-flash_read_status	flash.c	/^static uint8_t flash_read_status( void )$/;"	f	typeref:typename:uint8_t	file:
-flash_send_byte	flash.c	/^static void flash_send_byte( uint8_t data )$/;"	f	typeref:typename:void	file:
-flash_start_read	flash.c	/^void flash_start_read(uint32_t offset)$/;"	f	typeref:typename:void
-flash_start_write	flash.c	/^void flash_start_write(uint32_t offset)$/;"	f	typeref:typename:void
-flash_test	flash.c	/^void flash_test(void)$/;"	f	typeref:typename:void
-flash_wait_ready	flash.c	/^static void flash_wait_ready(void)$/;"	f	typeref:typename:void	file:
-flash_write_cmd	flash.c	/^static void flash_write_cmd( uint8_t cmd, uint32_t addr )$/;"	f	typeref:typename:void	file:
-flash_write_next_byte	flash.c	/^uint8_t flash_write_next_byte(uint8_t data)$/;"	f	typeref:typename:uint8_t
+flash_buffer_to_page	flash.c	/^static void flash_buffer_to_page(unsigned char bufferNo, unsigned int pageNo) {$/;"	f	typeref:typename:void	file:
+flash_flush	flash.c	/^void flash_flush(void) {$/;"	f	typeref:typename:void
+flash_init	flash.c	/^void flash_init(void) {$/;"	f	typeref:typename:void
+flash_read_byte	flash.c	/^static uint8_t flash_read_byte(void) {$/;"	f	typeref:typename:uint8_t	file:
+flash_read_next_byte	flash.c	/^uint8_t flash_read_next_byte(void) {$/;"	f	typeref:typename:uint8_t
+flash_read_status	flash.c	/^static uint8_t flash_read_status(void) {$/;"	f	typeref:typename:uint8_t	file:
+flash_send_byte	flash.c	/^static void flash_send_byte(uint8_t data) {$/;"	f	typeref:typename:void	file:
+flash_start_read	flash.c	/^void flash_start_read(uint32_t offset) {$/;"	f	typeref:typename:void
+flash_start_write	flash.c	/^void flash_start_write(uint32_t offset) {$/;"	f	typeref:typename:void
+flash_test	flash.c	/^void flash_test(void) {$/;"	f	typeref:typename:void
+flash_wait_ready	flash.c	/^static void flash_wait_ready(void) {$/;"	f	typeref:typename:void	file:
+flash_write_cmd	flash.c	/^static void flash_write_cmd(uint8_t cmd, uint32_t addr) {$/;"	f	typeref:typename:void	file:
+flash_write_next_byte	flash.c	/^uint8_t flash_write_next_byte(uint8_t data) {$/;"	f	typeref:typename:uint8_t
 flash_write_to_buffer	flash.c	/^static void flash_write_to_buffer(unsigned char bufferNo, unsigned int bufferAdr, uint16_t bytes/;"	f	typeref:typename:void	file:
-flow_ctrl	serial.c	/^  volatile uint8_t flow_ctrl = XON_SENT; \/\/ Flow control state variable$/;"	v	typeref:typename:volatile uint8_t
-gcode_char	g_code.c	/^int8_t gcode_char(char c, STEPPER_COORD* x, STEPPER_COORD* y) $/;"	f	typeref:typename:int8_t
+flow_ctrl	serial.c	/^volatile uint8_t flow_ctrl = XON_SENT; \/\/ Flow control state variable$/;"	v	typeref:typename:volatile uint8_t
+gcode_char	g_code.c	/^int8_t gcode_char(char c, STEPPER_COORD* x, STEPPER_COORD* y) {$/;"	f	typeref:typename:int8_t
 gcode_init	g_code.c	/^void gcode_init() {$/;"	f	typeref:typename:void
-get_cmd	stepper.c	/^static struct cmd *  get_cmd( void )$/;"	f	typeref:struct:cmd *	file:
+get_cmd	stepper.c	/^static struct cmd * get_cmd(void) {$/;"	f	typeref:struct:cmd *	file:
 get_miso	flash.c	/^#define get_miso(/;"	d	file:
 get_rows	keypad.c	/^#define get_rows(/;"	d	file:
 get_rows	keypad_expression.c	/^#define get_rows(/;"	d	file:
@@ -435,43 +435,43 @@ hpgl_init	hpgl.c	/^void hpgl_init() {$/;"	f	typeref:typename:void
 inb	avrlibdefs.h	/^	#define	inb(/;"	d
 inw	avrlibdefs.h	/^	#define	inw(/;"	d
 ip_pad	shvars.c	/^int32_t ip_pad[4];$/;"	v	typeref:typename:int32_t[4]
-is_numeric	g_code.c	/^is_numeric ( char c)$/;"	f	typeref:typename:BOOL	file:
-k_state	keypad.c	/^static int k_state=0;$/;"	v	typeref:typename:int	file:
+is_numeric	g_code.c	/^static BOOL is_numeric(char c) {$/;"	f	typeref:typename:BOOL	file:
+k_state	keypad.c	/^static int k_state = 0;$/;"	v	typeref:typename:int	file:
 k_state	keypad_expression.c	/^static int k_state = 0;$/;"	v	typeref:typename:int	file:
-keypadSet_Pressure_state	keypad.c	/^void keypadSet_Pressure_state( void )$/;"	f	typeref:typename:void
-keypadSet_Speed_state	keypad.c	/^void keypadSet_Speed_state( void )$/;"	f	typeref:typename:void
-keypad_init	keypad.c	/^void keypad_init( void )$/;"	f	typeref:typename:void
+keypadSet_Pressure_state	keypad.c	/^void keypadSet_Pressure_state(void) {$/;"	f	typeref:typename:void
+keypadSet_Speed_state	keypad.c	/^void keypadSet_Speed_state(void) {$/;"	f	typeref:typename:void
+keypad_init	keypad.c	/^void keypad_init(void) {$/;"	f	typeref:typename:void
 keypad_init	keypad_expression.c	/^void keypad_init(void) {$/;"	f	typeref:typename:void
-keypad_poll	keypad.c	/^int keypad_poll( void )$/;"	f	typeref:typename:int
+keypad_poll	keypad.c	/^int keypad_poll(void) {$/;"	f	typeref:typename:int
 keypad_poll	keypad_expression.c	/^int keypad_poll(void) {$/;"	f	typeref:typename:int
-keypad_prev	keypad.c	/^static uint8_t keypad_prev[KBD_MAX_COLS];  \/\/ previous state$/;"	v	typeref:typename:uint8_t[]	file:
+keypad_prev	keypad.c	/^static uint8_t keypad_prev[KBD_MAX_COLS]; \/\/ previous state$/;"	v	typeref:typename:uint8_t[]	file:
 keypad_prev	keypad_expression.c	/^uint8_t keypad_prev[KBD_MAX_COLS]; \/\/ previous state$/;"	v	typeref:typename:uint8_t[]
-keypad_scan	keypad.c	/^int keypad_scan( void )$/;"	f	typeref:typename:int
+keypad_scan	keypad.c	/^int keypad_scan(void) {$/;"	f	typeref:typename:int
 keypad_scan	keypad_expression.c	/^int keypad_scan(void) {$/;"	f	typeref:typename:int
-keypad_set_leds	keypad.c	/^void keypad_set_leds( uint16_t mask )$/;"	f	typeref:typename:void
+keypad_set_leds	keypad.c	/^void keypad_set_leds(uint16_t mask) {$/;"	f	typeref:typename:void
 keypad_set_leds	keypad_expression.c	/^void keypad_set_leds(uint16_t mask) {$/;"	f	typeref:typename:void
-keypad_state	keypad.c	/^static uint8_t keypad_state[KBD_MAX_COLS];	\/\/ current state$/;"	v	typeref:typename:uint8_t[]	file:
+keypad_state	keypad.c	/^static uint8_t keypad_state[KBD_MAX_COLS]; \/\/ current state$/;"	v	typeref:typename:uint8_t[]	file:
 keypad_state	keypad_expression.c	/^uint8_t keypad_state[KBD_MAX_COLS]; \/\/ current state$/;"	v	typeref:typename:uint8_t[]
-keypad_stop_pressed	keypad.c	/^char keypad_stop_pressed( void )$/;"	f	typeref:typename:char
+keypad_stop_pressed	keypad.c	/^char keypad_stop_pressed(void) {$/;"	f	typeref:typename:char
 keypad_stop_pressed	keypad_expression.c	/^char keypad_stop_pressed(void) {$/;"	f	typeref:typename:char
-keypad_write_cols	keypad.c	/^static void keypad_write_cols( short val )$/;"	f	typeref:typename:void	file:
+keypad_write_cols	keypad.c	/^static void keypad_write_cols(short val) {$/;"	f	typeref:typename:void	file:
 keypad_write_cols	keypad_expression.c	/^static void keypad_write_cols(short val) {$/;"	f	typeref:typename:void	file:
 leds	keypad.c	/^static uint16_t leds;$/;"	v	typeref:typename:uint16_t	file:
 leds	keypad_expression.c	/^uint16_t leds;$/;"	v	typeref:typename:uint16_t
 leds_off	keypad.h	/^#define leds_off(/;"	d
 leds_on	keypad.h	/^#define leds_on(/;"	d
 loc_x	stepper.c	/^static volatile int loc_x = -MAT_EDGE;$/;"	v	typeref:typename:volatile int	file:
-loc_y	stepper.c	/^static volatile int loc_y = -HOME_Y_LEAD;	\/\/ This is  the axis we need t home first -- negativ/;"	v	typeref:typename:volatile int	file:
-main	main.c	/^int main( void )$/;"	f	typeref:typename:int
-maxPages	flash.c	/^static unsigned int  maxPages=2048; \/\/ init method will figure this out for us$/;"	v	typeref:typename:unsigned int	file:
+loc_y	stepper.c	/^static volatile int loc_y = -HOME_Y_LEAD; \/\/ This is  the axis we need t home first -- negativ/;"	v	typeref:typename:volatile int	file:
+main	main.c	/^int main(void) {$/;"	f	typeref:typename:int
+maxPages	flash.c	/^static unsigned int maxPages = 2048; \/\/ init method will figure this out for us$/;"	v	typeref:typename:unsigned int	file:
 mosi_high	flash.c	/^#define mosi_high(/;"	d	file:
 mosi_low	flash.c	/^#define mosi_low(/;"	d	file:
 motor_off_delay	stepper.c	/^static unsigned short motor_off_delay = MOTOR_OFF_DEL;$/;"	v	typeref:typename:unsigned short	file:
-msleep	timer.c	/^void msleep( unsigned msecs )$/;"	f	typeref:typename:void
+msleep	timer.c	/^void msleep(unsigned msecs) {$/;"	f	typeref:typename:void
 nstate	hpgl.c	/^int8_t pstate, nstate;$/;"	v	typeref:typename:int8_t
 numpad	shvars.c	/^double numpad[4];$/;"	v	typeref:typename:double[4]
-ofs_x	stepper.c	/^static volatile int ofs_x = 0;				\/\/ Stores an offset to the absolute 0 of the X axis -- As se/;"	v	typeref:typename:volatile int	file:
-ofs_y	stepper.c	/^static volatile int ofs_y = 0;				\/\/ ""$/;"	v	typeref:typename:volatile int	file:
+ofs_x	stepper.c	/^static volatile int ofs_x = 0; \/\/ Stores an offset to the absolute 0 of the X axis -- As set b/;"	v	typeref:typename:volatile int	file:
+ofs_y	stepper.c	/^static volatile int ofs_y = 0; \/\/ ""$/;"	v	typeref:typename:volatile int	file:
 oled_display_firstpage	display_oled.c	/^void oled_display_firstpage(void) {$/;"	f	typeref:typename:void
 oled_display_init	display_oled.c	/^void oled_display_init(void) {$/;"	f	typeref:typename:void
 oled_display_nextpage	display_oled.c	/^int oled_display_nextpage(void) {$/;"	f	typeref:typename:int
@@ -482,9 +482,9 @@ outb	avrlibdefs.h	/^	#define	outb(/;"	d
 outw	avrlibdefs.h	/^	#define	outw(/;"	d
 pageBits	flash.c	/^static unsigned char pageBits = 0;$/;"	v	typeref:typename:unsigned char	file:
 pageCounter	flash.c	/^static unsigned int pageCounter = DF_RESERVED_PAGES;$/;"	v	typeref:typename:unsigned int	file:
-pageSize	flash.c	/^static unsigned int  pageSize = 264;  \/\/ init method will figure this out for us$/;"	v	typeref:typename:unsigned int	file:
-pen_down	stepper.c	/^ pen_down( void )$/;"	f	typeref:typename:void
-pen_up	stepper.c	/^pen_up( void )$/;"	f	typeref:typename:void
+pageSize	flash.c	/^static unsigned int pageSize = 264; \/\/ init method will figure this out for us$/;"	v	typeref:typename:unsigned int	file:
+pen_down	stepper.c	/^void pen_down(void) {$/;"	f	typeref:typename:void
+pen_up	stepper.c	/^void pen_up(void) {$/;"	f	typeref:typename:void
 pressure	stepper.c	/^static int pressure = MAX_PEN_PWM;$/;"	v	typeref:typename:int	file:
 pstate	hpgl.c	/^int8_t pstate, nstate;$/;"	v	typeref:typename:int8_t
 pvars	dial.c	/^static unsigned char pvars[MAX_DIALS]; \/\/ holds previous values$/;"	v	typeref:typename:unsigned char[]	file:
@@ -499,12 +499,12 @@ sck_high	flash.c	/^#define sck_high(/;"	d	file:
 sck_low	flash.c	/^#define sck_low(/;"	d	file:
 scratchpad	shvars.c	/^char scratchpad[SCRATCHPAD_SIZE];$/;"	v	typeref:typename:char[]
 sei	avrlibdefs.h	/^	#define sei(/;"	d
-serial_get_rx_buffer_count	serial.c	/^uint8_t serial_get_rx_buffer_count()$/;"	f	typeref:typename:uint8_t
-serial_get_tx_buffer_count	serial.c	/^uint8_t serial_get_tx_buffer_count()$/;"	f	typeref:typename:uint8_t
+serial_get_rx_buffer_count	serial.c	/^uint8_t serial_get_rx_buffer_count() {$/;"	f	typeref:typename:uint8_t
+serial_get_tx_buffer_count	serial.c	/^uint8_t serial_get_tx_buffer_count() {$/;"	f	typeref:typename:uint8_t
 serial_h	serial.h	/^#define serial_h$/;"	d
-serial_init	serial.c	/^void serial_init()$/;"	f	typeref:typename:void
-serial_read	serial.c	/^uint8_t serial_read()$/;"	f	typeref:typename:uint8_t
-serial_reset_read_buffer	serial.c	/^void serial_reset_read_buffer() $/;"	f	typeref:typename:void
+serial_init	serial.c	/^void serial_init() {$/;"	f	typeref:typename:void
+serial_read	serial.c	/^uint8_t serial_read() {$/;"	f	typeref:typename:uint8_t
+serial_reset_read_buffer	serial.c	/^void serial_reset_read_buffer() {$/;"	f	typeref:typename:void
 serial_rx_buffer	serial.c	/^uint8_t serial_rx_buffer[RX_BUFFER_SIZE];$/;"	v	typeref:typename:uint8_t[]
 serial_rx_buffer_head	serial.c	/^uint8_t serial_rx_buffer_head = 0;$/;"	v	typeref:typename:uint8_t
 serial_rx_buffer_tail	serial.c	/^volatile uint8_t serial_rx_buffer_tail = 0;$/;"	v	typeref:typename:volatile uint8_t
@@ -512,61 +512,61 @@ serial_tx_buffer	serial.c	/^uint8_t serial_tx_buffer[TX_BUFFER_SIZE];$/;"	v	type
 serial_tx_buffer_head	serial.c	/^uint8_t serial_tx_buffer_head = 0;$/;"	v	typeref:typename:uint8_t
 serial_tx_buffer_tail	serial.c	/^volatile uint8_t serial_tx_buffer_tail = 0;$/;"	v	typeref:typename:volatile uint8_t
 serial_write	serial.c	/^void serial_write(uint8_t data) {$/;"	f	typeref:typename:void
-setup	main.c	/^void setup(void)$/;"	f	typeref:typename:void
+setup	main.c	/^void setup(void) {$/;"	f	typeref:typename:void
 sound_mode	keypad.c	/^static uint8_t sound_mode = 1; \/\/ sound on$/;"	v	typeref:typename:uint8_t	file:
-spiInit	spi.c	/^void spiInit()$/;"	f	typeref:typename:void
-spiSendByte	spi.c	/^void spiSendByte(u08 data)$/;"	f	typeref:typename:void
-spiTransferByte	spi.c	/^u08 spiTransferByte(u08 data)$/;"	f	typeref:typename:u08
+spiInit	spi.c	/^void spiInit() {$/;"	f	typeref:typename:void
+spiSendByte	spi.c	/^void spiSendByte(u08 data) {$/;"	f	typeref:typename:void
+spiTransferByte	spi.c	/^u08 spiTransferByte(u08 data) {$/;"	f	typeref:typename:u08
 spiTransferComplete	spi.c	/^static volatile u08 spiTransferComplete;$/;"	v	typeref:typename:volatile u08	file:
-spiTransferWord	spi.c	/^u16 spiTransferWord(u16 data)$/;"	f	typeref:typename:u16
-state	stepper.c	/^static enum state$/;"	g	file:
-steep	stepper.c	/^    char steep;			\/\/ y > x$/;"	m	struct:bresenham	typeref:typename:char	file:
-step	stepper.c	/^    int step;			\/\/ current step$/;"	m	struct:bresenham	typeref:typename:int	file:
-step_delay	stepper.c	/^static int step_delay;		\/\/ delay between steps (if not 0)$/;"	v	typeref:typename:int	file:
-stepper_draw	stepper.c	/^void stepper_draw( int x, int y )$/;"	f	typeref:typename:void
-stepper_home	stepper.c	/^stepper_home(void )$/;"	f	typeref:typename:void
-stepper_init	stepper.c	/^void stepper_init( void )$/;"	f	typeref:typename:void
-stepper_jogRelative	stepper.c	/^stepper_jogRelative( int x, int y )$/;"	f	typeref:typename:void	file:
-stepper_jog_manual	stepper.c	/^void stepper_jog_manual(int direction, int dist)$/;"	f	typeref:typename:void
-stepper_load_paper	stepper.c	/^void stepper_load_paper( void )$/;"	f	typeref:typename:void
+spiTransferWord	spi.c	/^u16 spiTransferWord(u16 data) {$/;"	f	typeref:typename:u16
+state	stepper.c	/^static enum state {$/;"	g	file:
+steep	stepper.c	/^    char steep; \/\/ y > x$/;"	m	struct:bresenham	typeref:typename:char	file:
+step	stepper.c	/^    int step; \/\/ current step$/;"	m	struct:bresenham	typeref:typename:int	file:
+step_delay	stepper.c	/^static int step_delay; \/\/ delay between steps (if not 0)$/;"	v	typeref:typename:int	file:
+stepper_draw	stepper.c	/^void stepper_draw(int x, int y) {$/;"	f	typeref:typename:void
+stepper_home	stepper.c	/^void stepper_home(void) {$/;"	f	typeref:typename:void
+stepper_init	stepper.c	/^void stepper_init(void) {$/;"	f	typeref:typename:void
+stepper_jogRelative	stepper.c	/^static void stepper_jogRelative(int x, int y) {$/;"	f	typeref:typename:void	file:
+stepper_jog_manual	stepper.c	/^void stepper_jog_manual(int direction, int dist) {$/;"	f	typeref:typename:void
+stepper_load_paper	stepper.c	/^void stepper_load_paper(void) {$/;"	f	typeref:typename:void
 stepper_loc	shvars.c	/^STEPPER_POINT stepper_loc;$/;"	v	typeref:typename:STEPPER_POINT
-stepper_move	stepper.c	/^void stepper_move( int x, int y )$/;"	f	typeref:typename:void
-stepper_off	stepper.c	/^void stepper_off( void )$/;"	f	typeref:typename:void
-stepper_pressure	stepper.c	/^void stepper_pressure( int pressure )$/;"	f	typeref:typename:void
-stepper_set_origin00	stepper.c	/^stepper_set_origin00( void)$/;"	f	typeref:typename:void
-stepper_speed	stepper.c	/^void stepper_speed( int speed )$/;"	f	typeref:typename:void
-stepper_tick	stepper.c	/^void stepper_tick( void )$/;"	f	typeref:typename:void
-stepper_unload_paper	stepper.c	/^void stepper_unload_paper( void )$/;"	f	typeref:typename:void
-steps	stepper.c	/^    int steps;			\/\/ number of steps in main direction$/;"	m	struct:bresenham	typeref:typename:int	file:
-timer_get_pen_pressure	timer.c	/^int timer_get_pen_pressure()$/;"	f	typeref:typename:int
-timer_get_stepper_speed	timer.c	/^int timer_get_stepper_speed()$/;"	f	typeref:typename:int
-timer_init	timer.c	/^void timer_init( void )$/;"	f	typeref:typename:void
-timer_set_pen_pressure	timer.c	/^void timer_set_pen_pressure( int pressure )$/;"	f	typeref:typename:void
-timer_set_stepper_speed	timer.c	/^void timer_set_stepper_speed( int delay )$/;"	f	typeref:typename:void
+stepper_move	stepper.c	/^void stepper_move(int x, int y) {$/;"	f	typeref:typename:void
+stepper_off	stepper.c	/^void stepper_off(void) {$/;"	f	typeref:typename:void
+stepper_pressure	stepper.c	/^void stepper_pressure(int pressure) {$/;"	f	typeref:typename:void
+stepper_set_origin00	stepper.c	/^void stepper_set_origin00(void) {$/;"	f	typeref:typename:void
+stepper_speed	stepper.c	/^void stepper_speed(int speed) {$/;"	f	typeref:typename:void
+stepper_tick	stepper.c	/^void stepper_tick(void) {$/;"	f	typeref:typename:void
+stepper_unload_paper	stepper.c	/^void stepper_unload_paper(void) {$/;"	f	typeref:typename:void
+steps	stepper.c	/^    int steps; \/\/ number of steps in main direction$/;"	m	struct:bresenham	typeref:typename:int	file:
+timer_get_pen_pressure	timer.c	/^int timer_get_pen_pressure() {$/;"	f	typeref:typename:int
+timer_get_stepper_speed	timer.c	/^int timer_get_stepper_speed() {$/;"	f	typeref:typename:int
+timer_init	timer.c	/^void timer_init(void) {$/;"	f	typeref:typename:void
+timer_set_pen_pressure	timer.c	/^void timer_set_pen_pressure(int pressure) {$/;"	f	typeref:typename:void
+timer_set_stepper_speed	timer.c	/^void timer_set_stepper_speed(int delay) {$/;"	f	typeref:typename:void
 translate_init	scale.c	/^void translate_init() {$/;"	f	typeref:typename:void
 translate_scale	scale.c	/^void translate_scale() {$/;"	f	typeref:typename:void
-type	stepper.c	/^enum type$/;"	g	file:
+type	stepper.c	/^enum type {$/;"	g	file:
 u08	avrlibtypes.h	/^typedef unsigned char  u08;$/;"	t	typeref:typename:unsigned char
 u16	avrlibtypes.h	/^typedef unsigned short u16;$/;"	t	typeref:typename:unsigned short
 u32	avrlibtypes.h	/^typedef unsigned long  u32;$/;"	t	typeref:typename:unsigned long
 u64	avrlibtypes.h	/^typedef unsigned long long u64;$/;"	t	typeref:typename:unsigned long long
 u8g	display_oled.c	/^u8g_t u8g;$/;"	v	typeref:typename:u8g_t
-usb_getc	usb.c	/^uint8_t usb_getc()$/;"	f	typeref:typename:uint8_t
-usb_haschar	usb.c	/^int usb_haschar(void)$/;"	f	typeref:typename:int
-usb_init	usb.c	/^void usb_init( void ) $/;"	f	typeref:typename:void
-usb_putc	usb.c	/^void usb_putc(uint8_t c)$/;"	f	typeref:typename:void
-usb_puts	usb.c	/^void usb_puts(const char *s )$/;"	f	typeref:typename:void
+usb_getc	usb.c	/^uint8_t usb_getc() {$/;"	f	typeref:typename:uint8_t
+usb_haschar	usb.c	/^int usb_haschar(void) {$/;"	f	typeref:typename:int
+usb_init	usb.c	/^void usb_init(void) {$/;"	f	typeref:typename:void
+usb_putc	usb.c	/^void usb_putc(uint8_t c) {$/;"	f	typeref:typename:void
+usb_puts	usb.c	/^void usb_puts(const char *s) {$/;"	f	typeref:typename:void
 user_loc	shvars.c	/^USER_POINT user_loc;$/;"	v	typeref:typename:USER_POINT
-user_translate_x	scale.c	/^static double  user_xscale, user_yscale, user_translate_x, user_translate_y;$/;"	v	typeref:typename:double	file:
-user_translate_y	scale.c	/^static double  user_xscale, user_yscale, user_translate_x, user_translate_y;$/;"	v	typeref:typename:double	file:
-user_xscale	scale.c	/^static double  user_xscale, user_yscale, user_translate_x, user_translate_y;$/;"	v	typeref:typename:double	file:
-user_yscale	scale.c	/^static double  user_xscale, user_yscale, user_translate_x, user_translate_y;$/;"	v	typeref:typename:double	file:
+user_translate_x	scale.c	/^static double user_xscale, user_yscale, user_translate_x, user_translate_y;$/;"	v	typeref:typename:double	file:
+user_translate_y	scale.c	/^static double user_xscale, user_yscale, user_translate_x, user_translate_y;$/;"	v	typeref:typename:double	file:
+user_xscale	scale.c	/^static double user_xscale, user_yscale, user_translate_x, user_translate_y;$/;"	v	typeref:typename:double	file:
+user_yscale	scale.c	/^static double user_xscale, user_yscale, user_translate_x, user_translate_y;$/;"	v	typeref:typename:double	file:
 userprescale	scale.c	/^void userprescale(double absx, double absy, double *ox, double *oy) {$/;"	f	typeref:typename:void
 userscale	scale.c	/^void userscale(double fx, double fy, int16_t* x, int16_t* y, double* ox, double* oy) {$/;"	f	typeref:typename:void
-usleep	timer.c	/^void usleep( int usecs )$/;"	f	typeref:typename:void
-x	shvars.h	/^	STEPPER_COORD x;$/;"	m	struct:_stepper_xy	typeref:typename:STEPPER_COORD
-x	shvars.h	/^	USER_COORD x;$/;"	m	struct:_user_xy	typeref:typename:USER_COORD
-x	stepper.c	/^    int x, y; 					\/\/ target coordinates$/;"	m	struct:cmd	typeref:typename:int	file:
-y	shvars.h	/^	STEPPER_COORD y;$/;"	m	struct:_stepper_xy	typeref:typename:STEPPER_COORD
-y	shvars.h	/^	USER_COORD y;$/;"	m	struct:_user_xy	typeref:typename:USER_COORD
-y	stepper.c	/^    int x, y; 					\/\/ target coordinates$/;"	m	struct:cmd	typeref:typename:int	file:
+usleep	timer.c	/^void usleep(int usecs) {$/;"	f	typeref:typename:void
+x	shvars.h	/^    STEPPER_COORD x;$/;"	m	struct:_stepper_xy	typeref:typename:STEPPER_COORD
+x	shvars.h	/^    USER_COORD x;$/;"	m	struct:_user_xy	typeref:typename:USER_COORD
+x	stepper.c	/^    int x, y; \/\/ target coordinates$/;"	m	struct:cmd	typeref:typename:int	file:
+y	shvars.h	/^    STEPPER_COORD y;$/;"	m	struct:_stepper_xy	typeref:typename:STEPPER_COORD
+y	shvars.h	/^    USER_COORD y;$/;"	m	struct:_user_xy	typeref:typename:USER_COORD
+y	stepper.c	/^    int x, y; \/\/ target coordinates$/;"	m	struct:cmd	typeref:typename:int	file:

@@ -1,0 +1,67 @@
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   spi.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> spi.d; [ -s spi.d ] || rm -f spi.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   serial.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> serial.d; [ -s serial.d ] || rm -f serial.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   scale.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> scale.d; [ -s scale.d ] || rm -f scale.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   shvars.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> shvars.d; [ -s shvars.d ] || rm -f shvars.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   hpgl.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> hpgl.d; [ -s hpgl.d ] || rm -f hpgl.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   dial.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> dial.d; [ -s dial.d ] || rm -f dial.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   flash.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> flash.d; [ -s flash.d ] || rm -f flash.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   cli.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> cli.d; [ -s cli.d ] || rm -f cli.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   stepper.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> stepper.d; [ -s stepper.d ] || rm -f stepper.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   timer.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> timer.d; [ -s timer.d ] || rm -f timer.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   keypad.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> keypad.d; [ -s keypad.d ] || rm -f keypad.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   g_code.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> g_code.d; [ -s g_code.d ] || rm -f g_code.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   display_oled.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> display_oled.d; [ -s display_oled.d ] || rm -f display_oled.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   display.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> display.d; [ -s display.d ] || rm -f display.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   usb.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> usb.d; [ -s usb.d ] || rm -f usb.d
+set -e; avr-gcc -MM -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   main.c \
+| sed  -e 's,\(.*\)\.o[ :]*,\1.o \1.d : ,g' \
+> main.d; [ -s main.d ] || rm -f main.d
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   main.c -o main.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   usb.c -o usb.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   display.c -o display.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   display_oled.c -o display_oled.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   g_code.c -o g_code.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   keypad.c -o keypad.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   timer.c -o timer.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   stepper.c -o stepper.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   cli.c -o cli.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   flash.c -o flash.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   dial.c -o dial.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   hpgl.c -o hpgl.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   shvars.c -o shvars.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   scale.c -o scale.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   serial.c -o serial.o
+avr-gcc -c -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes   spi.c -o spi.o
+avr-gcc -mmcu=atmega1281 -I. -Datmega1281   -Os -DFCLK=16000000UL -DF_CPU=16000000UL -fpack-struct -I./m2u8  -fshort-enums -Wall -Werror -Wstrict-prototypes    main.o usb.o display.o display_oled.o g_code.o keypad.o timer.o stepper.o cli.o flash.o dial.o hpgl.o shvars.o scale.o serial.o spi.o --output freeexpression.elf -Wl,--gc-sections,-Map=freeexpression.map,--cref -lm -L./m2u8 -lm2u8
+avr-objcopy -O ihex -R .eeprom freeexpression.elf freeexpression.hex
+avr-objdump -h -S freeexpression.elf > freeexpression.lss
