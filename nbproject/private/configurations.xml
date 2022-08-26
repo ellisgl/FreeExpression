@@ -7,12 +7,6 @@
         </df>
       </df>
       <df name="src">
-        <df name=".vs">
-          <df name="FreeExpression">
-            <df name="v14">
-            </df>
-          </df>
-        </df>
         <df name="Debug">
         </df>
         <df name="m2u8">
