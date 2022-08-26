@@ -22,9 +22,7 @@ int keypad_scan(void);
 #define leds_off() do { PORTD |=  (1 << 5); } while(0) // PD5
 
 typedef enum _languge {
-    HPGL = 1,
-    G_CODE,
-    GPGL
+    HPGL = 1
 } en_language;
 
 extern en_language Lang;

@@ -45,9 +45,6 @@ Use Inkscape to draw and send a file to the cutter.  Inkscape 0.91 has an export
 - Cutter Up (Numeral 2): Moves the cutter away from the media.
 - Cutting Speed	(Xtra2): In conjunction with the +/keys the cutting speed can be chosen in 9 steps.
 - Cutting Pressure (Xtra1) : In conjunction with the +/keys the cutting pressure can be adjusted in 9 steps.
-- Letter H : HPGL language selection, (default)
-- Letter G: G-code language selection, see file g-code.c for supported g-code tokens
-
 - Stop: Aborts the currently cached cutting operations, but new data arriving from the PC will still trigger subsequent motion.
 
 ## Dials ##

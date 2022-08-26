@@ -210,22 +210,9 @@ int keypad_poll(void) {
         case KEYPAD_SOUNDONOFF:
             sound_mode = !sound_mode;
             break;
+
         case KEYPAD_FLIP:
             usb_puts("Hello world");
-            break;
-        case KEYPAD_G:
-            Lang = G_CODE;
-            display_puts("G-CODE selected");
-            break;
-
-        case KEYPAD_H:
-            Lang = HPGL;
-            display_puts("HPGL selected");
-            break;
-
-        case KEYPAD_P:
-            Lang = GPGL;
-            display_puts("GPGL selected");
             break;
 
         case KEYPAD_LOADMAT:
@@ -259,12 +246,11 @@ int keypad_poll(void) {
         case KEYPAD_MOVEUPRIGHT:
             stepper_jog_manual(key, 25); // move 1/16" each increment
 
-            // For auto key repeat on these buttons , clear previous  kbd status[] so that a new button press registers again 
-            for (c = 0; c < KBD_MAX_COLS; c++)
-
+            // For auto key repeat on these buttons, clear previous kbd status[] so that a new button press registers again 
+            for (c = 0; c < KBD_MAX_COLS; c++) {
                 keypad_prev[c] = 0;
+            }
             break;
-
 
 #ifdef DEBUG_FLASH  
         case KEYPAD_F1:
@@ -281,46 +267,52 @@ int keypad_poll(void) {
             pen_up();
             break;
 
-
         case KEYPAD_XTRA1:
-        {
             k_state = key;
             break;
-        }
+
         case KEYPAD_XTRA2:
-        {
             k_state = key;
             break;
-        }
+
         case KEYPAD_CUT:
             k_state = key;
             break;
 
         case KEYPAD_MINUS: // decrements either pressure or speed depending on what was last pressed 
-            if (k_state == KEYPAD_XTRA1) { // PRESSURE SET
+            if (k_state == KEYPAD_XTRA1) {
+                // PRESSURE SET
                 // pressure is inversely related to 1023, min pressure
                 int p = timer_get_pen_pressure() - 1;
                 timer_set_pen_pressure(p);
             }
-            if (k_state == KEYPAD_XTRA2) { // SPEED SET
+
+            if (k_state == KEYPAD_XTRA2) { 
+                // SPEED SET
                 int p = timer_get_stepper_speed() - 1;
                 timer_set_stepper_speed(p);
             }
             break;
 
-        case KEYPAD_PLUS: // increments either pressure or speed depending on what was last pressed 
-            if (k_state == KEYPAD_XTRA1) { // PRESSURE SET
+        case KEYPAD_PLUS: 
+            // Increments either pressure or speed depending on what was last pressed 
+            if (k_state == KEYPAD_XTRA1) { 
+                // PRESSURE SET
                 // pressure is inversely related to 1023, min pressure
                 int p = timer_get_pen_pressure() + 1;
                 timer_set_pen_pressure(p);
             }
-            if (k_state == KEYPAD_XTRA2) { // SPEED SET
+
+            if (k_state == KEYPAD_XTRA2) { 
+                // SPEED SET
                 int p = timer_get_stepper_speed() + 1;
                 timer_set_stepper_speed(p);
             }
             break;
     }
+
     _beep(key);
+
     return key;
 }
 
@@ -336,8 +328,8 @@ void _beep(int key) {
         case KEYPAD_MOVEUPRIGHT:
             break;
         default:
-            if (sound_mode == 1 && key > 0) // if a key was pressed that is not assigned beep
-            {
+            if (sound_mode == 1 && key > 0) {
+                // if a key was pressed that is not assigned beep
                 beeper_on(3600);
                 msleep(50);
                 beeper_off();

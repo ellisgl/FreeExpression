@@ -12,7 +12,7 @@ TARGET = freeexpression
 FCLK = 16000000UL
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC = main.c usb.c display.c display_oled.c g_code.c keypad.c timer.c stepper.c cli.c flash.c dial.c hpgl.c shvars.c scale.c serial.c spi.c 
+SRC = main.c usb.c display.c display_oled.c keypad.c timer.c stepper.c cli.c flash.c dial.c hpgl.c shvars.c scale.c serial.c spi.c 
 
 # Assembler sources 
 ASRC = 

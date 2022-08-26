@@ -42,7 +42,6 @@ C_SRCS +=  \
 ../display.c \
 ../display_oled.c \
 ../flash.c \
-../g_code.c \
 ../hpgl.c \
 ../keypad.c \
 ../display_oled.c \
@@ -68,7 +67,6 @@ dial.o \
 display.o \
 display_oled.o \
 flash.o \
-g_code.o \
 hpgl.o \
 keypad.o \
 display_lcd.o \
@@ -87,7 +85,6 @@ dial.o \
 display.o \
 display_oled.o \
 flash.o \
-g_code.o \
 hpgl.o \
 keypad.o \
 display_lcd.o \
@@ -106,7 +103,6 @@ dial.d \
 display.d \
 display_oled.d \
 flash.d \
-g_code.d \
 hpgl.d \
 keypad.d \
 display_lcd.d \
@@ -125,7 +121,6 @@ dial.d \
 display.d \
 display_oled.d \
 flash.d \
-g_code.d \
 hpgl.d \
 keypad.d \
 display_lcd.d \
@@ -185,14 +180,6 @@ LINKER_SCRIPT_DEP+=
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000UL -DMACHINE_EXPRESSION  -I"../m2u8" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O0 -fpack-struct -fshort-enums -mrelax -g2 -Wall -Werror -mmcu=atmega1281 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega1281" -c -std=gnu99 -fno-strict-aliasing -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
-	
-
-./g_code.o: .././g_code.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000UL -DMACHINE_EXPRESSION  -I"../m2u8" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O0 -fpack-struct -fshort-enums -mrelax -g2 -Wall -Werror -mmcu=atmega1281 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega1281" -c -std=gnu99 -fno-strict-aliasing -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
 
 ./hpgl.o: .././hpgl.c
 	@echo Building file: $<

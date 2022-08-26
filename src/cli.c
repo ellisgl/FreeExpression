@@ -43,7 +43,6 @@
 #include "version.h"
 #include "shvars.h"
 #include "hpgl.h"
-#include "g_code.h"
 #include "display.h"
 #include "keypad.h"
 
@@ -58,14 +57,6 @@ void cli_poll(void) {
             case HPGL:
                 cmd = hpgl_char(c, &dstx, &dsty, &labelchar);
                 break;
-
-            case G_CODE:
-                cmd = gcode_char(c, &dstx, &dsty);
-                break;
-
-                //case GPGL:
-                // TODO
-                //break;
 
             default:
                 continue; // just consume everything and do nothing
