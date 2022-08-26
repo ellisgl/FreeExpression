@@ -256,7 +256,7 @@ void stepper_draw(int x, int y) {
 
     cmd->x = x;
     cmd->y = y;
-    cmd_head++; // this really allocates the entry in the queue
+    ++cmd_head; // this really allocates the entry in the queue
 }
 
 /**
@@ -276,7 +276,7 @@ void stepper_move(int x, int y) {
 
     cmd->x = x;
     cmd->y = y;
-    cmd_head++; // this really allocates the entry in the queue
+    ++cmd_head; // this really allocates the entry in the queue
 }
 
 /**
@@ -295,7 +295,7 @@ static void stepper_jogRelative(int x, int y) {
 
     cmd->x = x;
     cmd->y = y;
-    cmd_head++; // this really allocates the entry in the queue
+    ++cmd_head; // this really allocates the entry in the queue
 }
 
 /** 
@@ -347,7 +347,7 @@ void stepper_jog_manual(int direction, int dist) {
 void stepper_speed(int speed) {
     struct cmd *cmd = alloc_cmd(SPEED);
     cmd->x = speed;
-    cmd_head++;
+    ++cmd_head;
 }
 
 /**
@@ -380,7 +380,7 @@ void stepper_unload_paper(void) {
 void stepper_pressure(int pressure) {
     struct cmd *cmd = alloc_cmd(PRESSURE);
     cmd->x = pressure;
-    cmd_head++;
+    ++cmd_head;
 }
 
 /**
@@ -461,7 +461,7 @@ static enum state bresenham_step(void) {
         return READY;
     }
 
-    b.step++;
+    ++b.step;
     if ((b.error -= b.delta) < 0) {
         b.error += b.steps;
         loc_x += b.dx;
@@ -539,7 +539,7 @@ void stepper_tick(void) {
         case HOME0:
             if (loc_y < 0) {
                 // first move out by the offset given in the home init
-                loc_y++; // so that the initial power on jolt doesn't trigger switch
+                ++loc_y; // so that the initial power on jolt doesn't trigger switch
             } else {
                 ActionState = HOME1;
             }
@@ -560,7 +560,7 @@ void stepper_tick(void) {
             step_delay = 4;
 
             if (at_home()) {
-                loc_y++; // move the other way until the switch opens  
+                ++loc_y; // move the other way until the switch opens  
             } else {
                 loc_y = 0; // now this is home on Y axis
                 ofs_x = ofs_y = 0;

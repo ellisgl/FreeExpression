@@ -270,7 +270,7 @@ lolbel:
             break;
 
         case STATE_IP:
-            for (i = 0; i < 4; i++) {
+            for (i = 0; i < 4; ++i) {
                 ip_pad[i] = (int32_t) round(numpad[i]);
             }
 
@@ -278,7 +278,7 @@ lolbel:
             break;
 
         case STATE_SC:
-            for (i = 0; i < 4; i++) {
+            for (i = 0; i < 4; ++i) {
                 sc_pad[i] = (int32_t) round(numpad[i]);
             }
 
@@ -368,7 +368,7 @@ lolbel:
                     sscanf_P(scratchpad, PSTR("%d"), &fx);
                     si = 0;
                     numpad[numpad_idx] = fx;
-                    numpad_idx++;
+                    ++numpad_idx;
                     if (numpad_idx == 4 || c == ';') {
                         pstate = nstate;
                         goto lolbel;

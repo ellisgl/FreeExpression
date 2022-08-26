@@ -130,7 +130,7 @@ ISR(UART1_TRANSMIT_INTERRUPT) {
         UART1_DATA = serial_tx_buffer[tail];
 
         // Update tail position
-        tail++;
+        ++tail;
         if (tail == TX_BUFFER_SIZE) {
             tail = 0;
         }
@@ -154,7 +154,7 @@ uint8_t serial_read() {
     } else {
         uint8_t data = serial_rx_buffer[tail];
 
-        tail++;
+        ++tail;
         if (tail == RX_BUFFER_SIZE) {
             tail = 0;
         }

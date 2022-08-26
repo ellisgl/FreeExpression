@@ -112,7 +112,7 @@ static unsigned char bufferNumber = 1;
 static void flash_send_byte(uint8_t data) {
     char i;
 
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < 8; ++i) {
         if (data & 0x80) {
             mosi_high();
         } else {
@@ -131,7 +131,7 @@ static void flash_send_byte(uint8_t data) {
 static uint8_t flash_read_byte(void) {
     uint8_t data = 0;
     char i;
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < 8; ++i) {
         sck_high();
         data = (data << 1) + get_miso();
         sck_low();
@@ -202,7 +202,7 @@ uint8_t flash_write_next_byte(uint8_t data) {
     if (byteCounter == pageSize) {
         flash_buffer_to_page(bufferNumber, pageCounter);
         bufferNumber = (bufferNumber == 1) ? 2 : 1;
-        pageCounter++;
+        ++pageCounter;
         byteCounter = 0;
     } else {
         flash_write_to_buffer(bufferNumber, byteCounter, 1, &data);
@@ -276,13 +276,13 @@ void flash_test(void) {
     char c[20];
 
     int i = 0;
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 4; ++i) {
         c[0] = flash_read_next_byte();
     }
-    for (i = 0; i < 20; i++) {
+    for (i = 0; i < 20; ++i) {
         c[i] = 0x00;
     }
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 10; ++i) {
         c[i] = flash_read_next_byte();
     }
 

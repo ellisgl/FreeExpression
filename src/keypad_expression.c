@@ -104,7 +104,7 @@ static int k_state = 0;
 static void keypad_write_cols(short val) {
     int i;
 
-    for (i = 0; i < KBD_MAX_COLS; i++) {
+    for (i = 0; i < KBD_MAX_COLS; ++i) {
         if (val < 0) {
             data_h();
         } else {
@@ -144,7 +144,7 @@ int keypad_scan(void) {
     keypad_write_cols(~1); // single zero at column 0
     data_h(); // shift in ones
 
-    for (col = 0; col < KBD_MAX_COLS; col++) {
+    for (col = 0; col < KBD_MAX_COLS; ++col) {
         keypad_state[col] = get_rows();
         clk_h();
         clk_l();
@@ -153,11 +153,11 @@ int keypad_scan(void) {
     // leds_on( );	
 
     // keyboard has been scanned, now look for pressed keys
-    for (col = 0; col < KBD_MAX_COLS; col++) {
+    for (col = 0; col < KBD_MAX_COLS; ++col) {
         uint8_t diff = keypad_state[col] ^ keypad_prev[col];
 
         if (diff) {
-            for (row = 0; row < KBD_MAX_ROWS; row++) {
+            for (row = 0; row < KBD_MAX_ROWS; ++row) {
                 uint8_t mask = 1 << row;
                 if (diff & mask & keypad_state[col]) {
                     pressed = row * 24 + col;
