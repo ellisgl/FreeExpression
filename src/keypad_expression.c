@@ -72,17 +72,19 @@
 #include <avr/interrupt.h>
 #include <inttypes.h>
 #include <stdio.h>
+
 #include "keypad.h"
 #include "timer.h"
 #include "stepper.h"
 #include "display.h"
 #include "flash.h"
-// pin assignment
-#define STOP (1 << 0) // PD0
-#define LEDS (1 << 5) // PD5
-#define DATA (1 << 6)  // PD6
-#define CLK (1 << 7) // PD7
-#define ROWS    (0x1f)  // mask for PG4-0
+
+// Pin assignment.
+#define STOP    (1 << 0)    // PD0
+#define LEDS    (1 << 5)    // PD5
+#define DATA    (1 << 6)    // PD6
+#define CLK     (1 << 7)    // PD7
+#define ROWS    (0x1f)      // mask for PG4-0
 
 #define clk_h()  do { PORTD |=  CLK;  } while(0)
 #define clk_l()  do { PORTD &= ~CLK;  } while(0)
@@ -96,17 +98,19 @@ uint16_t leds;
 
 static int k_state = 0;
 
-/*
+/**
  * keypad_write_cols: write all 16 column bits in 'val' to shift register.
  */
 static void keypad_write_cols(short val) {
     int i;
 
     for (i = 0; i < KBD_MAX_COLS; i++) {
-        if (val < 0)
+        if (val < 0) {
             data_h();
-        else
+        } else {
             data_l();
+        }
+
         clk_h();
         val <<= 1;
         clk_l();
@@ -120,7 +124,7 @@ void keypad_set_leds(uint16_t mask) {
     leds_on();
 }
 
-/*
+/**
  * return state of 'STOP' key.
  */
 char keypad_stop_pressed(void) {
@@ -128,7 +132,7 @@ char keypad_stop_pressed(void) {
     return !c;
 }
 
-/* 
+/**
  * keypad_scan: perform a single scan of keyboard. Returns keycode of 
  * key that was pressed (or -1 if nothing).  
  */
@@ -139,6 +143,7 @@ int keypad_scan(void) {
     leds_off(); // turn off LEDs during scan
     keypad_write_cols(~1); // single zero at column 0
     data_h(); // shift in ones
+
     for (col = 0; col < KBD_MAX_COLS; col++) {
         keypad_state[col] = get_rows();
         clk_h();
@@ -154,21 +159,22 @@ int keypad_scan(void) {
         if (diff) {
             for (row = 0; row < KBD_MAX_ROWS; row++) {
                 uint8_t mask = 1 << row;
-                if (diff & mask & keypad_state[col])
+                if (diff & mask & keypad_state[col]) {
                     pressed = row * 24 + col;
+                }
             }
         }
+
         keypad_prev[col] = keypad_state[col];
     }
+
     return pressed;
 }
-
 
 //#define LOAD_PAPER	0x4c
 //#define UNLOAD_PAPER	0x4d
 
 //keypad_poll is here instead of in keypad.c due to calling of various actions like load paper, etc.
-
 int keypad_poll(void) {
     int key = keypad_scan();
     char string[40];
@@ -191,7 +197,7 @@ int keypad_poll(void) {
         case KEYPAD_MOVEDNRIGHT:
         case KEYPAD_MOVERIGHT:
         case KEYPAD_MOVEUPRIGHT:
-            stepper_move_manual(key);
+            // stepper_move_manual(key); // Undefined?
             break;
             //debugging the pen
         case KEYPAD_F1:
@@ -202,48 +208,51 @@ int keypad_poll(void) {
             break;
 
         case KEYPAD_XTRA1:
-        {
             int p = timer_get_pen_pressure();
             sprintf(string, "Pressure: %d", p);
             display_puts(string);
             k_state = key;
             break;
-        }
+
         case KEYPAD_XTRA2:
-        {
             int p = timer_get_stepper_speed();
             sprintf(string, "Speed: %d", p);
             display_puts(string);
             k_state = key;
             break;
-        }
+
         case KEYPAD_CUT:
             k_state = key;
             break;
+
         case KEYPAD_MINUS:
-            if (k_state == KEYPAD_XTRA1) { // PRESSURE SET
+            if (k_state == KEYPAD_XTRA1) { 
+                // PRESSURE SET
                 // pressure is inversely related to 1023, min pressure
                 int p = timer_get_pen_pressure() - 1;
                 timer_set_pen_pressure(p);
             }
-            if (k_state == KEYPAD_XTRA2) { // SPEED SET
+
+            if (k_state == KEYPAD_XTRA2) { 
+                // SPEED SET
                 int p = timer_get_stepper_speed() - 1;
                 timer_set_stepper_speed(p);
             }
             break;
         case KEYPAD_PLUS:
-            if (k_state == KEYPAD_XTRA1) { // PRESSURE SET
+            if (k_state == KEYPAD_XTRA1) {
+                // PRESSURE SET
                 // pressure is inversely related to 1023, min pressure
                 int p = timer_get_pen_pressure() + 1;
                 timer_set_pen_pressure(p);
             }
-            if (k_state == KEYPAD_XTRA2) { // SPEED SET
+
+            if (k_state == KEYPAD_XTRA2) { 
+                // SPEED SET
                 int p = timer_get_stepper_speed() + 1;
                 timer_set_stepper_speed(p);
             }
             break;
-
-
     }
 
     return key;
