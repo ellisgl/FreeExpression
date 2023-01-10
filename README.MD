@@ -24,10 +24,23 @@ Forked from https://github.com/thetazzbot/FreeExpression, which was was forked f
 This will be aimed at the Expression V1 machine, and not the Cake or Personal machines. This code base is intended to be "clean" and be open source chain friendly.
 
 
-If you still want to proceed:
+## If you still want to proceed:
 
 You will need a ATMEL programmer device, search for "ATMEL 51 AVR USB ISP ASP Microcontroller Programmer". And if you don't want to open the machine, you might want to get one of these adapters built: https://gitlab.com/EllisGL/cricut-isp-cartridge
 
+
+### Building: ##
+
+Install developements tools (gcc, make, etc) and avr-gcc.
+in the `src` folder, run `make`
+
+
+### Burning: ##
+
+avrdude -c usbasp -p m1281 -U flash:w:FreeExpression.hex
+
+
+### Using
 Use Inkscape to draw and send a file to the cutter.  Inkscape 0.91 has an export to Plot feature (under Extensions) which sends a HPGL langauge file to the COM port where the cutter is connected to. Use 9600 baud and  make sure XON/XOFF is selected for flow control. Inkscape works good on Windows and Linux machines.
 
 ----------
