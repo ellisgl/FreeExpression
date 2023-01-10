@@ -31,7 +31,7 @@ You will need a ATMEL programmer device, search for "ATMEL 51 AVR USB ISP ASP Mi
 
 ### Building: ##
 
-Install developements tools (gcc, make, etc) and avr-gcc.
+Install developements tools (gcc, make, etc), avr-gcc and avrdude.
 in the `src` folder, run `make`
 
 
