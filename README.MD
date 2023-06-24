@@ -26,7 +26,7 @@ This will be aimed at the Expression V1 machine, and not the Cake or Personal ma
 
 ## If you still want to proceed:
 
-You will need a ATMEL programmer device, search for "ATMEL 51 AVR USB ISP ASP Microcontroller Programmer". And if you don't want to open the machine, you might want to get one of these adapters built: https://gitlab.com/EllisGL/cricut-isp-cartridge
+You will need a ATMEL programmer device, search for "ATMEL 51 AVR USB ISP ASP Microcontroller Programmer". And if you don't want to open the machine, you might want to get one of these adapters built: https://gitlab.com/EllisGL/cricut-isp-cartridge (I have a couple of these, and would be willing to part with my extras)
 
 
 ### Building: ##
