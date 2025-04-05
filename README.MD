@@ -38,7 +38,9 @@ cmake --build .
 make
 ```
 ### Burning: ##
+```bash
 avrdude -c usbasp -p m1281 -U flash:w:FreeExpression.hex
+```
 
 ### Using
 Use Inkscape to draw and send a file to the cutter.  Inkscape 0.91 has an export to Plot feature (under Extensions) which sends a HPGL langauge file to the COM port where the cutter is connected to. Use 9600 baud and  make sure XON/XOFF is selected for flow control. Inkscape works good on Windows and Linux machines.
