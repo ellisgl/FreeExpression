@@ -1,6 +1,6 @@
 /**
  * main.c
- *
+ * 
  * FreeExpression firmware, main program
  *
  * This source original developed by  https://github.com/Arlet/Freecut
@@ -25,6 +25,7 @@
 #include <avr/wdt.h>
 #include <inttypes.h>
 #include <stdio.h>
+#include "keys.h"
 #include "usb.h"
 #include "keypad.h"
 #include "timer.h"
@@ -39,7 +40,7 @@
 void setup(void);
 
 void setup(void) {
-    // Watch-dogging disabled -- No use while debugging / testing
+    // Watch-dogging disabled -- No use while debugging / testing 
     // wdt_enable( WDTO_30MS );
 
     keypad_init();

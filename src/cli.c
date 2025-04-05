@@ -35,6 +35,7 @@
 #include <stdio.h>
 #include <setjmp.h>
 #include <math.h>
+#include "keys.h"
 #include "timer.h"
 #include "cli.h"
 #include "usb.h"
@@ -64,14 +65,14 @@ void cli_poll(void) {
         switch (cmd) {
             case CMD_PU:
                 if (dstx >= 0 && dsty >= 0) {
-                    // filter out illegal moves
+                    // filter out illegal moves 
                     stepper_move(dstx, dsty);
                 }
                 break;
 
             case CMD_PD:
                 if (dstx >= 0 && dsty >= 0) {
-                    // filter out illegal moves
+                    // filter out illegal moves 
                     stepper_draw(dstx, dsty);
                 }
                 break;
