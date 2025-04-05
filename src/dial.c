@@ -32,7 +32,7 @@
 #include <avr/io.h>
 #include <inttypes.h>
 #include <stdio.h>
-
+#Include "keys.h"
 #include "keypad.h"
 #include "dial.h"
 #include "timer.h"

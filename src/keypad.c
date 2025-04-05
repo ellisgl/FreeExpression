@@ -80,6 +80,7 @@
 #include <avr/interrupt.h>
 #include <inttypes.h>
 #include <stdio.h>
+#include "keys.h"
 #include "keypad.h"
 #include "timer.h"
 #include "stepper.h"

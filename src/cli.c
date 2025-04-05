@@ -35,7 +35,7 @@
 #include <stdio.h>
 #include <setjmp.h>
 #include <math.h>
-
+#include "keys.h"
 #include "timer.h"
 #include "cli.h"
 #include "usb.h"
