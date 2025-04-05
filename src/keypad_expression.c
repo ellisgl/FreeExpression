@@ -72,7 +72,7 @@
 #include <avr/interrupt.h>
 #include <inttypes.h>
 #include <stdio.h>
-
+#include "keypad_expression.h"
 #include "keypad.h"
 #include "timer.h"
 #include "stepper.h"

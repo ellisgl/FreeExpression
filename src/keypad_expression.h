@@ -119,6 +119,6 @@ enum {
     KEYPAD_MOVEDNLEFT = 112,
     KEYPAD_MOVEDN = 113,
     KEYPAD_MOVEDNRIGHT = 114
-} KEYS;
+} extern KEYS;
 
 #endif
