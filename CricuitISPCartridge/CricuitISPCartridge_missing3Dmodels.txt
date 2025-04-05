@@ -1,0 +1,11 @@
+### Missing 3D models - created on 2025-04-05 14:21
+### Printed by checking_3D_models plugin
+Board file: /home/ellis/FreeExpression/CricuitISPCartridge/CricuitISPCartridge.kicad_pcb
+3D missing models written to:
+/home/ellis/FreeExpression/CricuitISPCartridge/CricuitISPCartridge_missing3Dmodels.txt
+-------
+('J3', '${KICAD6_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_2x03_P2.54mm_Vertical.wrl')
+('J2', '${KICAD6_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Vertical.wrl')
+-------
+NUM of 3D missing models:2
+checked extensions ['.stp', '.step', '.stpZ']
