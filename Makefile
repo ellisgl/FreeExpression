@@ -18,7 +18,7 @@ SRC = src/main.c src/usb.c src/display.c src/display_oled.c src/keypad.c src/tim
 ASRC = 
 
 # Optional compiler flags.
-CFLAGS  = -D$(MCU) $(TEST) $(CE) -Os -DFCLK=$(FCLK) -DF_CPU=$(FCLK) -fpack-struct -I./src/m2u8 
+CFLAGS  = -D$(MCU) $(TEST) $(CE) -Os -DFCLK=$(FCLK) -DF_CPU=$(FCLK) -fpack-struct -I./m2u8 
 CFLAGS += -fshort-enums -Wall -Werror -Wstrict-prototypes 
 
 # Optional assembler flags.
@@ -29,7 +29,7 @@ LDFLAGS = -Wl,--gc-sections,-Map=$(TARGET).map,--cref
 
 # Additional libraries
 LDFLAGS += -lm
-LDFLAGS += -L./src/m2u8 -lm2u8
+LDFLAGS += -L./m2u8 -lm2u8
 # ---------------------------------------------------------------------------
 
 # Define directories, if needed.
