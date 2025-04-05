@@ -50,16 +50,6 @@ LST = $(ASRC:.S=.lst) $(SRC:.c=.lst)
 ALL_CFLAGS = -mmcu=$(MCU) -I. $(CFLAGS)
 ALL_ASFLAGS = -mmcu=$(MCU) -I. -x assembler-with-cpp $(ASFLAGS)
 
-# Ensure the m2u8 library is compiled first, if needed.
-ifneq ($(wildcard ./src/m2u8/m2u8.a),)
-  ALL_CFLAGS += -L./src/m2u8 -lm2u8
-else
-  # Compile the m2u8 library first if it does not exist.
-  $(shell $(CC) $(ALL_CFLAGS) -c ./src/m2u8/m2u8.c -o ./src/m2u8/m2u8.o)
-  $(shell $(CC) -mmcu=$(MCU) -I. -c ./src/m2u8/m2u8.o -o ./src/m2u8/m2u8.a)
-  ALL_CFLAGS += -L./src/m2u8 -lm2u8
-endif
-
 # Default target.
 all: $(TARGET).elf $(TARGET).hex $(TARGET).lss tags
 
