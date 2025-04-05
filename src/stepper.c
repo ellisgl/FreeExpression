@@ -5,17 +5,17 @@
  * the 4 coils (per motor) can be driven with a full current (through the big
  * transistor) or a reduced current (through a smaller transistor + 47 Ohm
  * resistor). The reduced current I call 'half current', but it may be less.
- * 
+ *
  * The Y motor (pen movement) is controlled through PORTC, and the X motor
  * (mat roller) is controlled through PORTA. Connections are identical.
- * 
+ *
  * In addition, the Z coordinate is controlled by two pins: PE2 is used
  * for up/down toggle, and PB6 selects the pressure with a PWM signal.
- * 
+ *
  * A small pushbutton is attached to PD1, which is active low when
  * pushed. This button detects when the gray cover on the pen holder is
  * moved all the way to the 'home' position.
- * 
+ *
  * Step resolution is about 400 steps/inch. For a 12x12 inch mat, that means
  * there's about 4800x4800 steps of usable space. Coordinate origin is the
  * blade starting point on the mat. A small amount of negative X is allowed
@@ -44,17 +44,16 @@
 #include <avr/interrupt.h>
 #include <inttypes.h>
 #include <stdio.h>
-#include "keys.h"
 #include "stepper.h"
 #include "keypad.h"
 #include "timer.h"
 #include "display.h"
 
-#define MAT_EDGE        250         // distance to roll to load mat 
+#define MAT_EDGE        250         // distance to roll to load mat
 #define HOME_Y_LEAD     100         // distance to move the carriage out before homing.
 #define MAX_Y           4800        // This is the width of the carriage 4800 == 12"
-#define MAX_X           32000       // That's 80 inches of vinyl cutting -- 	
-#define MOTOR_OFF_DEL   30000       // number of iterations through the ISR after last motor movement before the stepper power gets turned off 
+#define MAX_X           32000       // That's 80 inches of vinyl cutting --
+#define MOTOR_OFF_DEL   30000       // number of iterations through the ISR after last motor movement before the stepper power gets turned off
 // 30000 is about 1 minute at speed 5
 
 #define HOME            (1 << 1 )   // PD1, attached to 'home' push button
@@ -62,12 +61,12 @@
 
 #define at_home()       (!(PIND & HOME))
 
-/** 
- * motor phases: There are 16 different stepper motor phases, using 
- * various combinations of full/half power to create the smallest 
+/**
+ * motor phases: There are 16 different stepper motor phases, using
+ * various combinations of full/half power to create the smallest
  * possible steps:
- *    
- *   0   1   2   3   4   5   6   7   8   9  10   11  12  13  14  15 
+ *
+ *   0   1   2   3   4   5   6   7   8   9  10   11  12  13  14  15
  *  ___________    .   .   .   .   .   .   .   .   .   .   .________
  *     .   .   \___    .   .   .   .   .   .   .   .    ___/   .   .
  * 0   .   .   .   \___________________________________/   .   .   .
@@ -82,12 +81,12 @@
  * 2 __________________/   .   .   .   .       .   \________________
  *     .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .
  *     .   .   .   .   .   .   .   .   .    ___________________    .
- *     .   .   .   .   .   .   .   .   .___/       .   .   .   \___ 
+ *     .   .   .   .   .   .   .   .   .___/       .   .   .   \___
  * 3 __________________________________/   .   .       .   .   .   \
  *
- * 
+ *
  */
-/* 
+/*
  * Pinout for the PORTA as well as PORTC port
  */
 #define H0              0x01        // half current, coil 0 - 1 0000 0001
@@ -108,11 +107,11 @@ static uint8_t StepperPhaseTable[] = {
 
 /* *
  * current location of cutter.
- * 
-  The two variables loc_x and loc_y represent the current x/y location of the cutting tool and the lower 4 bits are directly 
+ *
+  The two variables loc_x and loc_y represent the current x/y location of the cutting tool and the lower 4 bits are directly
   used to look up the stepper motor drive signals via the phase table (16 micro-steps in the stepper_tick ISR.
-  This implies that loc_xand loc_y always have to increment/decrement in steps of 1 in order to execute through all the phases. 
-     
+  This implies that loc_xand loc_y always have to increment/decrement in steps of 1 in order to execute through all the phases.
+
  * Initialize at left (away from home switch), and with the mat touching
  * the rollers, such that loading the mat is a simple movement to (0,0)
  */
@@ -130,7 +129,7 @@ static int pressure = MAX_PEN_PWM;
 static struct bresenham {
     int step; // current step
     int steps; // number of steps in main direction
-    int delta; // number of steps in other direction 
+    int delta; // number of steps in other direction
     int error; // residual error
     int dx; // x step direction
     int dy; // y step direction
@@ -151,7 +150,7 @@ static enum state {
 /**
  * command queue. The stepper controller takes commands from the queue
  * using step timer interrupt. Main program can put new commands in.
- * 
+ *
  * The idea behind this queue is to keep the movement engine as busy as
  * possible, by smoothly joining the end of one stroke with the beginning of
  * the next one, so ideally the whole path can be traced in one continuous
@@ -160,10 +159,10 @@ static enum state {
 #define CMD_QUEUE_SIZE 32 // must be power of two
 
 enum type {
-    MOVE, // move with pen up 
+    MOVE, // move with pen up
     DRAW, // move with pen down
     SPEED, // set speed
-    PRESSURE, // set pressure 
+    PRESSURE, // set pressure
 };
 
 struct cmd {
@@ -206,7 +205,7 @@ void stepper_home(void) {
     ActionState = HOME0; // immediately do a home sequence
 }
 
-// Take stepper drivers off power -- 
+// Take stepper drivers off power --
 
 void stepper_off(void) {
     PORTA = 0;
@@ -241,7 +240,7 @@ static struct cmd * get_cmd(void) {
 }
 
 /**
- * Cut to coordinate (x, y). 
+ * Cut to coordinate (x, y).
  */
 void stepper_draw(int x, int y) {
     struct cmd *cmd = alloc_cmd(DRAW); // This call blocks if the queue is full
@@ -298,11 +297,11 @@ static void stepper_jogRelative(int x, int y) {
     ++cmd_head; // this really allocates the entry in the queue
 }
 
-/** 
+/**
  * Function to move the cutting head/media freely throughout the physical range of the machine.
  */
 void stepper_jog_manual(int direction, int dist) {
-    // If there is anything in the queue don't move !! 
+    // If there is anything in the queue don't move !!
     // To protect from moving while a program executes.
 
     if (cmd_head != cmd_tail) {
@@ -355,7 +354,7 @@ void stepper_speed(int speed) {
  */
 void stepper_load_paper(void) {
     if (loc_y < 0) {
-        // not homed yet 
+        // not homed yet
         return;
     }
 
@@ -368,7 +367,7 @@ void stepper_load_paper(void) {
 }
 
 /**
- * Unloading the media: go to absolute 0 minus the MAT feed distance to free the mat/media 
+ * Unloading the media: go to absolute 0 minus the MAT feed distance to free the mat/media
  */
 void stepper_unload_paper(void) {
     stepper_move(-(MAT_EDGE + ofs_x), -ofs_y); // move to absolute position
@@ -384,7 +383,7 @@ void stepper_pressure(int pressure) {
 }
 
 /**
- * The original firmware also removes the PWM signal, but it seems 
+ * The original firmware also removes the PWM signal, but it seems
  * to work OK when you leave it on.
  */
 void pen_up(void) {
@@ -402,7 +401,7 @@ void pen_down(void) {
     int pe = PORTE;
 
     if (loc_x < 0 || loc_y < 0) {
-        // prevent dropping the cutter when there is no media underneath 
+        // prevent dropping the cutter when there is no media underneath
         return;
     }
 
@@ -417,7 +416,7 @@ void pen_down(void) {
 }
 
 /**
- * initialize Bresenham line drawing algorithm. Draw from (x, y) 
+ * initialize Bresenham line drawing algorithm. Draw from (x, y)
  * to (x1, y1).
  */
 static void bresenham_init(int x1, int y1) {
@@ -519,14 +518,14 @@ enum state do_next_command(void) {
  * This function is called by a timer interrupt. It does one motor step.
  */
 void stepper_tick(void) {
-    // this introduces a delay in the execution of stepper movements to allow for pen up,down,etc motions to be executed 
+    // this introduces a delay in the execution of stepper movements to allow for pen up,down,etc motions to be executed
     if (step_delay) {
         step_delay--;
         return;
     }
 
     // abort cutting if 'STOP' is pressed.
-    // TODO: This is not sufficient -- also need to stop the flow of new commands from the UART and signal to the PC 
+    // TODO: This is not sufficient -- also need to stop the flow of new commands from the UART and signal to the PC
     // that we want to abort the job, otherwise we only stop what is currently in the queue
     if (keypad_stop_pressed()) {
         ActionState = READY;
@@ -560,7 +559,7 @@ void stepper_tick(void) {
             step_delay = 4;
 
             if (at_home()) {
-                ++loc_y; // move the other way until the switch opens  
+                ++loc_y; // move the other way until the switch opens
             } else {
                 loc_y = 0; // now this is home on Y axis
                 ofs_x = ofs_y = 0;
@@ -598,7 +597,7 @@ void stepper_tick(void) {
     }
 }
 
-/** 
+/**
  * Enables the ports for stepper drivers and cutter up/down control
  */
 void stepper_init(void) {
