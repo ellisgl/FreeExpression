@@ -124,4 +124,4 @@ clean :
 .PHONY : all clean 
 
 tags: *.[hc]
-ctags *.[hc]
+	ctags *.[hc]
