@@ -29,7 +29,7 @@ LDFLAGS = -Wl,--gc-sections,-Map=$(TARGET).map,--cref
 
 # Additional libraries
 LDFLAGS += -lm
-LDFLAGS += -L./src/m2u8 -lm2u8
+LDFLAGS += -L./src/m2u8 -lsrc/m2u8
 # ---------------------------------------------------------------------------
 
 # Define directories, if needed.
