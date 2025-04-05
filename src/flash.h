@@ -6,7 +6,7 @@
  * This file is part of FreeExpression.
  *
  * https://github.com/thetazzbot/FreeExpression
- * 
+ *
  * FreeExpression is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 2.
  *
@@ -23,19 +23,19 @@
 #ifndef FLASH_H
 #define FLASH_H
 
-#define SetBit(x,y)  (x |= (y))
-#define ClrBit(x,y)  (x &=~(y))
-#define ChkBit(x,y)  (x  & (y))
+#define SetBit(x, y) (x |=  (y))
+#define ClrBit(x, y) (x &=~ (y))
+#define ChkBit(x, y) (x &   (y))
 
 extern unsigned char PageBits;
-extern unsigned int PageSize;
+extern unsigned int  PageSize;
 
-uint8_t flash_read_next_byte(void);
-void flash_start_read(uint32_t offset);
-void flash_start_write(uint32_t offset);
-void flash_init(void);
-uint8_t flash_write_next_byte(uint8_t data);
-void flash_test(void);
-void flash_flush(void);
+uint8_t  flash_read_next_byte(void);
+void     flash_start_read(uint32_t offset);
+void     flash_start_write(uint32_t offset);
+void     flash_init(void);
+uint8_t  flash_write_next_byte(uint8_t data);
+void     flash_test(void);
+void     flash_flush(void);
 
 #endif

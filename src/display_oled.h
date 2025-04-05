@@ -9,7 +9,7 @@
 
 void oled_display_init(void);
 void oled_display_firstpage(void);
-int oled_display_nextpage(void);
+int  oled_display_nextpage(void);
 void oled_display_puts(const char *s);
 void oled_display_println(char *s);
 void oled_display_update(void);

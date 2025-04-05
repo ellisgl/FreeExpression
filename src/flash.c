@@ -6,9 +6,9 @@
  * Pin 	|  Func	| AVR
  *------+-------+---------
  *  1   |  SI 	| PB7
- *  2   |  SCK  | PB1 
- *  4   |  !CS  | PB4 
- *  8   |  SO   | PB0 
+ *  2   |  SCK  | PB1
+ *  4   |  !CS  | PB4
+ *  8   |  SO   | PB0
  *
  * only contains a test/dump function for now.
  *
@@ -44,66 +44,63 @@
 #include "flash.h"
 #include "display.h"
 
-#define MISO (1 << 0)
-#define SCK (1 << 1)
-#define CS (1 << 4)
-#define MOSI  (1 << 7)
+#define MISO      (1 << 0)
+#define SCK       (1 << 1)
+#define CS        (1 << 4)
+#define MOSI      (1 << 7)
+#define cs_low    ( )      do { PORTB &= ~CS; }   while(0)
+#define cs_high   ( )      do { PORTB |=  CS; }   while(0)
+#define mosi_low  ( )      do { PORTB &= ~MOSI; } while(0)
+#define mosi_high ( )      do { PORTB |=  MOSI; } while(0)
+#define sck_low   ( )      do { PORTB &= ~SCK; }  while(0)
+#define sck_high  ( )      do { PORTB |=  SCK; }  while(0)
+#define get_miso  ( )      (PINB & 1)
 
-#define cs_low( ) do { PORTB &= ~CS; } while(0)
-#define cs_high( ) do { PORTB |=  CS; } while(0)
-#define mosi_low( ) do { PORTB &= ~MOSI; } while(0)
-#define mosi_high( ) do { PORTB |=  MOSI; } while(0)
-#define sck_low( ) do { PORTB &= ~SCK; } while(0)
-#define sck_high( ) do { PORTB |=  SCK; } while(0)
-#define get_miso( ) (PINB & 1)
+#define DF_READY_FLAG 0x80 // Ready/busy status is indicated using bit 7 of the status register. 0x80 = b10000000
+#define DF_STATUS     0xd7 // Status byte
 
-#define DF_READY_FLAG 0x80 //Ready/busy status is indicated using bit 7 of the status register. 0x80 = b10000000
-
-#define DF_STATUS   0xd7 // status byte 
-
-// read ops
+// Read operations.
 #define DF_READPAGE  0xd2 // Main Memory Page Read
 #define DF_READBUF1  0xd4 // Buffer 1 Read
 #define DF_READBUF2  0xd6 // Buffer 2 Read
-#define DF_CONTREAD   0xe8 // continuous array read (legacy) 
+#define DF_CONTREAD  0xe8 // continuous array read (legacy)
 
-// buffer trf
+// Buffer transfer operations.
 #define DF_TRFBUF1  0x53 // Main Memory Page to Buffer 1 Transfer
 #define DF_TRFBUF2  0x55 // Main Memory Page to Buffer 2 Transfer
 
-// write ops
-#define DF_WRITEBUF1 0x84 // Buffer 1 Write
-#define DF_WRITEPAGE1 0x88 // Buffer 1 to Main Memory Page Program without Built-in Erase
+// Write operations.
+#define DF_WRITEBUF1   0x84 // Buffer 1 Write
+#define DF_WRITEPAGE1  0x88 // Buffer 1 to Main Memory Page Program without Built-in Erase
 #define DF_WRITEPAGE2E 0x86 // Buffer 1 to Main Memory Page Program with Built-in Erase
-#define DF_WRITEBUF2 0x87 // Buffer 2 Write
-#define DF_WRITEPAGE2 0x89 // Buffer 2 to Main Memory Page Program without Built-in Erase
+#define DF_WRITEBUF2   0x87 // Buffer 2 Write
+#define DF_WRITEPAGE2  0x89 // Buffer 2 to Main Memory Page Program without Built-in Erase
 #define DF_WRITEPAGE2E 0x86 // Buffer 2 to Main Memory Page Program with Built-in Erase
-#define DF_PAGEERASE 0x81 // Page Erase
-#define DF_BLOCKERASE 0x50 // Block Erase
+#define DF_PAGEERASE   0x81 // Page Erase
+#define DF_BLOCKERASE  0x50 // Block Erase
 #define DF_SECTORERASE 0x7C // Sector Erase
-#define DF_PAGEPGM1  0x82 // Main Memory Page Program Through Buffer 1
-#define DF_PAGEPGM2  0x85 // Main Memory Page Program Through Buffer 2
+#define DF_PAGEPGM1    0x82 // Main Memory Page Program Through Buffer 1
+#define DF_PAGEPGM2    0x85 // Main Memory Page Program Through Buffer 2
 
 
-const uint8_t DF_pagebits[] PROGMEM = {9, 9, 9, 9, 9, 10, 10, 11};
+const uint8_t DF_pagebits[] PROGMEM  = {9, 9, 9, 9, 9, 10, 10, 11};
 const uint16_t DF_pagesize[] PROGMEM = {264, 264, 264, 264, 264, 528, 528, 1056};
 #define DF_RESERVED_PAGES 0 // we will reserve the first two pages for status info
 
-// always start at first page past reserved area
-static unsigned int pageCounter = DF_RESERVED_PAGES;
-static unsigned int byteCounter = 0;
-
-static unsigned char pageBits = 0;
-static unsigned int pageSize = 264; // init method will figure this out for us
-static unsigned int maxPages = 2048; // init method will figure this out for us
+// Always start at first page past reserved area.
+static unsigned int  pageCounter  = DF_RESERVED_PAGES;
+static unsigned int  byteCounter  = 0;
+static unsigned char pageBits     = 0;
+static unsigned int  pageSize     = 264; // init method will figure this out for us
+static unsigned int  maxPages     = 2048; // init method will figure this out for us
 static unsigned char bufferNumber = 1;
 
-/***
+/**
  * As it is now, the flash code implements methods to read and write bytes/pages/buffers
- * It is used by the serial routine to buffer in all the incoming data, so that 
+ * It is used by the serial routine to buffer in all the incoming data, so that
  * processing can be delayed.  Once the cutting starts, the buffer is then read back
  * by the hgpl system and parsed.
- ***/
+ **/
 
 /**
  * write a single byte to flash chip

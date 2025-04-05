@@ -23,9 +23,10 @@
 #define DIALS_H
 
 // Enum to declare the ADC input channel numbers
-
+// Only on some machines this is a potentiometer,
+// most have a quadrature encoder for the RH dial.
 enum {
-    DIAL_SIZE = 0, // only on some machines this is a potentiometer, most have a quadrature encoder for the RH dial
+    DIAL_SIZE = 0,
     DIAL_SPEED,
     DIAL_PRESSURE,
     MAX_DIALS

@@ -4,7 +4,7 @@
  *
  * https://code.google.com/p/u8glib/
  *
- * Device type can be either u8g_dev_ssd1325_nhd27oled_bw_sw_spi or the 2x variant, 
+ * Device type can be either u8g_dev_ssd1325_nhd27oled_bw_sw_spi or the 2x variant,
  * u8g_dev_ssd1325_nhd27oled_2x_bw_sw_spi
  *
  * https://code.google.com/p/u8glib/wiki/device
@@ -30,7 +30,7 @@
  *  7   |  NC	   | PE5
  *  8   |  RES	   | PE6
  *  9   |  CS#	   | PE7
- *  10  |  NC      | 
+ *  10  |  NC      |
  *
  * This file is part of FreeExpression.
  *
@@ -59,6 +59,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+
 #include "m2u8/u8g.h"
 #include "display_oled.h"
 #include "timer.h"
@@ -70,10 +71,9 @@ static uint8_t cur_x = 0, cur_y = 0;
 char display_message[80]; // 4 lines of 20 chars??
 
 // Local functions
-
 /**
- *Displays the currently selected speed as bars
- * Must be called from inside the draw loop
+ * Displays the currently selected speed as bars.
+ * Must be called from inside the draw loop.
  */
 void _oled_display_speed(void) {
     int p = timer_get_stepper_speed();
@@ -90,26 +90,24 @@ void _oled_display_speed(void) {
     if (p < 3) {
         u8g_SetColorIndex(&u8g, 1);
     }
-
     u8g_DrawBox(&u8g, 36, 60, 2, 4); // 3
 
     if (p < 4) {
         u8g_SetColorIndex(&u8g, 1);
     }
-
     u8g_DrawBox(&u8g, 39, 59, 2, 5); // 4
 
     if (p < 5) {
         u8g_SetColorIndex(&u8g, 1);
     }
-
     u8g_DrawBox(&u8g, 42, 58, 2, 6); // 5
+
     u8g_SetColorIndex(&u8g, 3);
 }
 
 /**
- * Displays the currently selected pressure as bars
- * Must be called from inside the draw loop
+ * Displays the currently selected pressure as bars.
+ * Must be called from inside the draw loop.
  */
 void _oled_display_pressure(void) {
     int p = timer_get_pen_pressure();
@@ -120,26 +118,23 @@ void _oled_display_pressure(void) {
     if (p < 2) {
         u8g_SetColorIndex(&u8g, 1);
     }
-
     u8g_DrawBox(&u8g, 57, 61, 2, 3); // 2
 
     if (p < 3) {
         u8g_SetColorIndex(&u8g, 1);
     }
-
     u8g_DrawBox(&u8g, 60, 60, 2, 4); // 3
 
     if (p < 4) {
         u8g_SetColorIndex(&u8g, 1);
     }
-
     u8g_DrawBox(&u8g, 63, 59, 2, 5); // 4
 
     if (p < 5) {
         u8g_SetColorIndex(&u8g, 1);
     }
-
     u8g_DrawBox(&u8g, 66, 58, 2, 6); // 5
+
     u8g_SetColorIndex(&u8g, 3);
 }
 

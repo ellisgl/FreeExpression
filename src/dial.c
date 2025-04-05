@@ -9,7 +9,7 @@
  * speed | PF1 (ADC1)
  * press | PF2 (ADC2)
  *
- * Each input is a simple voltage divider between 0 and 5V, with 
+ * Each input is a simple voltage divider between 0 and 5V, with
  * a few discrete settings where the pot clicks.
  *
  * This file is part of FreeExpression.
@@ -40,9 +40,8 @@
 
 static uint8_t channel = 0;
 static unsigned char pvars[MAX_DIALS]; // holds previous values
-
 static unsigned char dial_adc[MAX_DIALS];
-static unsigned char dial_steps[MAX_DIALS] = {25, 5, 5}; // weak association !! should use struct instead 
+static unsigned char dial_steps[MAX_DIALS] = {25, 5, 5}; // weak association !! should use struct instead
 
 static int dial_setting(uint8_t dial) {
     int step = (dial_adc[dial] * (dial_steps[dial] - 1) + 125) / 250;
@@ -55,7 +54,7 @@ void dial_poll(void) {
     unsigned char i;
     static unsigned char queued = 0;
 
-    // records ADC readings from 2 or 3 ADC inputs on a round robin basis 	
+    // records ADC readings from 2 or 3 ADC inputs on a round robin basis
     dial_adc[channel] = ADCH;
 
     if (++channel == MAX_DIALS) {
@@ -63,9 +62,9 @@ void dial_poll(void) {
         queued = 1;
     }
 
-    // setup for next measurement, 
+    // Setup for next measurement,
     ADMUX = (1 << ADLAR) | (1 << REFS0) | channel; // Change input channel
-    ADCSRA |= (1 << ADSC); // start next conversion so it's ready to be read next time we come around 
+    ADCSRA |= (1 << ADSC); // start next conversion so it's ready to be read next time we come around
 
     if (!queued) {
         // wait until all ADC channels are read at least once before looking  at the  readings
@@ -98,7 +97,7 @@ void dial_init(void) {
      * 0 0 AREF, Internal VREF turned off
      * 0 1 AVCC with external capacitor at AREF pin
      */
-    // DIDR0 = 0x7;  // disable digital input buffers on ADC0 to ADC2 --- mostly for current consumption though, potentiometers are low in impedance so it doesn't matter  
+    // DIDR0 = 0x7;  // disable digital input buffers on ADC0 to ADC2 --- mostly for current consumption though, potentiometers are low in impedance so it doesn't matter
     // 8 bit read mode, left justified result -- read only ADCH, using VCC for ADCref
     ADMUX = (1 << ADLAR) | (1 << REFS0 | channel);
     // Enable ADC, set ADC clock pre-scaler to 128 and start a conversion
