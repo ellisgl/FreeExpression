@@ -12,24 +12,24 @@ TARGET = freeexpression
 FCLK = 16000000UL
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC = src/main.c src/usb.c src/display.c src/display_oled.c src/keypad.c src/timer.c src/stepper.c src/cli.c src/flash.c src/dial.c src/hpgl.c src/shvars.c src/scale.c src/serial.c src/spi.c 
+SRC = src/main.c src/usb.c src/display.c src/display_oled.c src/keypad.c src/timer.c src/stepper.c src/cli.c src/flash.c src/dial.c src/hpgl.c src/shvars.c src/scale.c src/serial.c src/spi.c
 
-# Assembler sources 
-ASRC = 
+# Assembler sources
+ASRC =
 
 # Optional compiler flags.
-CFLAGS  = -D$(MCU) $(TEST) $(CE) -Os -DFCLK=$(FCLK) -DF_CPU=$(FCLK) -fpack-struct -I./src/m2u8 
-CFLAGS += -fshort-enums -Wall -Werror -Wstrict-prototypes 
+CFLAGS  = -D$(MCU) $(TEST) $(CE) -Os -DFCLK=$(FCLK) -DF_CPU=$(FCLK) -fpack-struct -I./src/m2u8
+CFLAGS += -fshort-enums -Wall -Werror -Wstrict-prototypes
 
 # Optional assembler flags.
-ASFLAGS = -Wa,-ahlms=$(<:.S=.lst),-gstabs 
+ASFLAGS = -Wa,-ahlms=$(<:.S=.lst),-gstabs
 
 # Optional linker flags.
 LDFLAGS = -Wl,--gc-sections,-Map=$(TARGET).map,--cref
 
 # Additional libraries
 LDFLAGS += -lm
-LDFLAGS += -L./src/m2u8 -lsrc/m2u8
+LDFLAGS += -L./src/m2u8 -lm2u8
 # ---------------------------------------------------------------------------
 
 # Define directories, if needed.
@@ -47,18 +47,18 @@ OBJ = $(ASRC:.S=.o) $(SRC:.c=.o)
 LST = $(ASRC:.S=.lst) $(SRC:.c=.lst)
 
 # Combine all necessary flags and optional flags. Add target processor to flags.
-ALL_CFLAGS = -mmcu=$(MCU) -I. $(CFLAGS) 
+ALL_CFLAGS = -mmcu=$(MCU) -I. $(CFLAGS)
 ALL_ASFLAGS = -mmcu=$(MCU) -I. -x assembler-with-cpp $(ASFLAGS)
 
 # Default target.
 all: $(TARGET).elf $(TARGET).hex $(TARGET).lss tags
 
-.PHONY: prog 
+.PHONY: prog
 
 # You may need to change this line to program your device.
-prog: all 
-	#avrdude -pm128 -cstk500v2 -b115200 -P/dev/ttyUSB0 -u -V -U flash:w:$(TARGET).hex:i 
-	avrdude -c usbasp -p m1281 -U flash:w:$(TARGET).hex 
+prog: all
+	#avrdude -pm128 -cstk500v2 -b115200 -P/dev/ttyUSB0 -u -V -U flash:w:$(TARGET).hex:i
+	avrdude -c usbasp -p m1281 -U flash:w:$(TARGET).hex
 
 # Create final output files (.hex) from ELF output file.
 %.hex: %.elf
@@ -108,7 +108,7 @@ clean :
 	rm -f $(SRC:.c=.d)
 	rm -f logfile
 
-# Automatically generate C source code dependencies. 
+# Automatically generate C source code dependencies.
 # (Code originally taken from the GNU make user manual and modified (See README.txt Credits).)
 # Note that this will work with sh (bash) and sed that is shipped with WinAVR (see the SHELL variable defined above).
 # This may not work with other shells or other seds.
@@ -121,7 +121,7 @@ clean :
 -include $(SRC:.c=.d)
 
 # Listing of phony targets.
-.PHONY : all clean 
+.PHONY : all clean
 
 tags: *.[hc]
 	ctags *.[hc]
