@@ -8,18 +8,11 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up AVR toolchain
-      run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc-avr avr-libc
-    - name: Build it
-      run: |
-        cd src/m2u8
-        # Compile the C code
-        make
-        cd ..
-        make
+    - uses: bazhenov/action-avr-make@v1.0
+    - name: make
+      run: make
