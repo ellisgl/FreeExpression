@@ -25,27 +25,25 @@ This will be aimed at the Expression V1 machine, and not the Cake or Personal ma
 
 
 ## If you still want to proceed:
-
 You will need a ATMEL programmer device, search for "ATMEL 51 AVR USB ISP ASP Microcontroller Programmer". And if you don't want to open the machine, you might want to get one of these adapters built: https://gitlab.com/EllisGL/cricut-isp-cartridge (I have a couple of these, and would be willing to part with my extras)
 
-
 ### Building: ##
+```bash
+sudo apt install gcc-avr avr-libc avrdude make cmake`  # For Debian/Ubuntu based systems
 
-Install developements tools (gcc, make, etc), avr-gcc and avrdude.
-in the `src` folder, run `make clean && make`
-
-
+git clone https://github.com/ellisgl/FreeExpression
+cd FreeExpression\build
+cmake .. 
+cmake --build .
+make
+```
 ### Burning: ##
-
 avrdude -c usbasp -p m1281 -U flash:w:FreeExpression.hex
-
 
 ### Using
 Use Inkscape to draw and send a file to the cutter.  Inkscape 0.91 has an export to Plot feature (under Extensions) which sends a HPGL langauge file to the COM port where the cutter is connected to. Use 9600 baud and  make sure XON/XOFF is selected for flow control. Inkscape works good on Windows and Linux machines.
 
 ----------
-
-
 ## Keypad key functions: ##
 
 - On/Off: Powers the machine and executes carriage homing sequence.
@@ -61,22 +59,17 @@ Use Inkscape to draw and send a file to the cutter.  Inkscape 0.91 has an export
 - Stop: Aborts the currently cached cutting operations, but new data arriving from the PC will still trigger subsequent motion.
 
 ## Dials ##
-
 - Dial Speed: 	Also adjusts the cutting speed and is used to read the cutting speed after power up. Only the mid range of the speed choices can be selected, use the +/keys to get all the way to the end.
-
 - Dial Pressure: Also adjusts the cutting pressure and is used to read the initial pressure on power-up. Only the mid range of the pressure choices can be selected, use the +/keys for the full range.
-
 - Dial Size:  Not used. The machine can cut up to 80"x12"wide.
 
 ## Multi-cut and media lock ##
-
 After the machine moves the media/carriage there is a time of about 1 minute (depending on speed setting) where the motors stay engaged and you can not move the media/carriage by hand. After this timeout the motors go into standby and you can move carriage and media by hand. This timeout is useful so that one can cut the same shape multiple times and not loose registration - for thick material multi-cut.
 
 # Command language #
 Currently supports HPGL -- HP Graphic Language. Cutting speed and pressure is NOT taken from the language input, only from keyboard and associated dials.
 
 After the machine moves the media/carriage there is a time of about 1 minute at speed 5 where the motors stay engaged and you can not move the media/carriage by hand. After this timeout the motors go into standby and you can move carriage and media by hand. This timeout is useful so that one can cut the same shape multiple times and not loose registration - for thick material multi-cut.
-
 
 # CAD and Cutting #
 From the CAD system export via DXF format, then open that file in Inkscape. On the input dialog choose manual scale factor of 25.4 if the original CAD file was done in inch scale, otherwise set to 1.0. 
