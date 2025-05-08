@@ -3,7 +3,7 @@
 This file documents the pinout of the connectors and the modifications required for JTAG and SPI LCD hookup LCD connector -- see also LCD.c
 
 |J1 Pin|  LCD Pin   |AVR pin    | Original connection                                                 |
-|------|------------|-----------|---------------------------------------------------------------------|-
+|------|------------|-----------|---------------------------------------------------------------------|
 |1     |GND, 1      |           |                                                                     |
 |2     |Vcc, 2      |5v         |                                                                     |
 |3     |MOSI,(R/W),5|PB2,MOSI,12|PF5, (TMS,56), cut trace                                             |
@@ -20,7 +20,7 @@ This file documents the pinout of the connectors and the modifications required 
 ## J5, JTAG and serial programming and debugging
 
 |J5 pin|Func.  |via    |AVR pin|Components removed or trace cut|
-|------|-------|-------|-------|-------------------------------|-
+|------|-------|-------|-------|-------------------------------|
 |1     |PDO    |       |3      |                               |
 |2     |VCC    |R11    |52     |                               |
 |3     |SCK    |R9     |11     |Also connects to U1 pin 2 (SCK)|
