@@ -48,49 +48,49 @@
 
 void cli_poll(void) {
     STEPPER_COORD dstx, dsty;
-    char c;
-    int8_t cmd;
-    uint8_t labelchar;
+    char          c;
+    int8_t        cmd;
+    uint8_t       labelchar;
 
     while ((c = (char) usb_getc()) != SERIAL_NO_DATA) {
         switch (Lang) {
-            case HPGL:
-                cmd = hpgl_char(c, &dstx, &dsty, &labelchar);
-                break;
+        case HPGL:
+            cmd = hpgl_char(c, &dstx, &dsty, &labelchar);
+            break;
 
-            default:
-                continue; // just consume everything and do nothing
+        default:
+            continue; // just consume everything and do nothing
         }
 
         switch (cmd) {
-            case CMD_PU:
-                if (dstx >= 0 && dsty >= 0) {
-                    // filter out illegal moves
-                    stepper_move(dstx, dsty);
-                }
-                break;
-
-            case CMD_PD:
-                if (dstx >= 0 && dsty >= 0) {
-                    // filter out illegal moves
-                    stepper_draw(dstx, dsty);
-                }
-                break;
-
-            case CMD_INIT:
-                // 1. Home
-                // 2. Initialize scale and stuff.
-                // Typically happens at start and end of each document;
-                dstx = dsty = 0;
+        case CMD_PU:
+            if (dstx >= 0 && dsty >= 0) {
+                // filter out illegal moves
                 stepper_move(dstx, dsty);
-                break;
+            }
+            break;
 
-            case CMD_SEEK0:
-                stepper_move(dstx, dsty);
-                break;
+        case CMD_PD:
+            if (dstx >= 0 && dsty >= 0) {
+                // filter out illegal moves
+                stepper_draw(dstx, dsty);
+            }
+            break;
 
-            default:
-                break;
+        case CMD_INIT:
+            // 1. Home
+            // 2. Initialize scale and stuff.
+            // Typically happens at start and end of each document;
+            dstx = dsty = 0;
+            stepper_move(dstx, dsty);
+            break;
+
+        case CMD_SEEK0:
+            stepper_move(dstx, dsty);
+            break;
+
+        default:
+            break;
         }
     }
 }

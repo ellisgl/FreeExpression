@@ -17,14 +17,16 @@
  * You should have received a copy of the GNU General Public License
  * along with Grbl.  If not, see <http://www.gnu.org/licenses/>.
  */
-/** 
- * This file is based on work from Grbl v0.8, distributed under the 
- * terms of the MIT-license. See COPYING for more details.  
+/**
+ * This file is based on work from Grbl v0.8, distributed under the
+ * terms of the MIT-license. See COPYING for more details.
  *   Copyright (c) 2009-2011 Simen Svale Skogsrud
  *   Copyright (c) 2011-2012 Sungeun K. Jeon
  */
+#include "avrlib.h"
 #include <avr/interrupt.h>
-
+#include <avr/io.h>
+#include <avr/iom1281.h>
 #include "serial.h"
 
 uint8_t serial_rx_buffer[RX_BUFFER_SIZE];
@@ -126,7 +128,7 @@ ISR(UART1_TRANSMIT_INTERRUPT) {
     } else
 #endif
     {
-        // Send a byte from the buffer	
+        // Send a byte from the buffer
         UART1_DATA = serial_tx_buffer[tail];
 
         // Update tail position

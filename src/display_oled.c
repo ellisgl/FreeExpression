@@ -55,6 +55,7 @@
  */
 #include <avr/interrupt.h>
 #include <avr/io.h>
+#include <avr/iom1281.h>
 #include <inttypes.h>
 #include <stdarg.h>
 #include <stdio.h>

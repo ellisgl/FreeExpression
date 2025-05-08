@@ -37,6 +37,7 @@
  *
  */
 #include <avr/io.h>
+#include <avr/iom1281.h>
 #include <stdio.h>
 #include <inttypes.h>
 #include <avr/pgmspace.h>
@@ -44,17 +45,17 @@
 #include "flash.h"
 #include "display.h"
 
-#define MISO      (1 << 0)
-#define SCK       (1 << 1)
-#define CS        (1 << 4)
-#define MOSI      (1 << 7)
-#define cs_low    ( )      do { PORTB &= ~CS; }   while(0)
-#define cs_high   ( )      do { PORTB |=  CS; }   while(0)
-#define mosi_low  ( )      do { PORTB &= ~MOSI; } while(0)
-#define mosi_high ( )      do { PORTB |=  MOSI; } while(0)
-#define sck_low   ( )      do { PORTB &= ~SCK; }  while(0)
-#define sck_high  ( )      do { PORTB |=  SCK; }  while(0)
-#define get_miso  ( )      (PINB & 1)
+#define MISO        (1 << 0)
+#define SCK         (1 << 1)
+#define CS          (1 << 4)
+#define MOSI        (1 << 7)
+#define cs_low()    do { PORTB &= ~CS; }   while(0)
+#define cs_high()   do { PORTB |=  CS; }   while(0)
+#define mosi_low()  do { PORTB &= ~MOSI; } while(0)
+#define mosi_high() do { PORTB |=  MOSI; } while(0)
+#define sck_low()   do { PORTB &= ~SCK; }  while(0)
+#define sck_high()  do { PORTB |=  SCK; }  while(0)
+#define get_miso()  (PINB & 1)
 
 #define DF_READY_FLAG 0x80 // Ready/busy status is indicated using bit 7 of the status register. 0x80 = b10000000
 #define DF_STATUS     0xd7 // Status byte

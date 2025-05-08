@@ -4,7 +4,7 @@
  * Timer 0 is used for stepper timing
  * Timer 1 is used as solenoid PWM, through OC1B output
  * Timer 2 is used as overall (slow) event timer, as well sleep delay timer.
- * Timer 3 is used to generate tones on the speaker through OC3A output, 
+ * Timer 3 is used to generate tones on the speaker through OC3A output,
  * period is adjusted for tone.
  *
  * This file is part of FreeExpression.
@@ -24,8 +24,10 @@
  * along with FreeExpression. If not, see http://www.gnu.org/licenses/.
  *
  */
+#include "avrlib.h"
 #include <avr/interrupt.h>
 #include <avr/io.h>
+#include <avr/iom1281.h>
 #include <avr/wdt.h>
 #include <string.h>
 #include <stdio.h>
@@ -42,7 +44,7 @@ static int current_pen_pressure;
 static int current_stepper_speed;
 
 /**
- * called @250 Hz, divide further in software for slow events 
+ * called @250 Hz, divide further in software for slow events
  *       TCCR2A = (1 << WGM21);     // CTC
  *       TCCR2B = (1 << CS21) | (1 << CS20) ; //timer2's prescaler is different than the rest... set two bits instead of one
  *       OCR2A  = 249;  // value to count to, CTC interrupts when this value is met
@@ -84,8 +86,8 @@ void beeper_off(void) {
 }
 
 /**
- * usleep: sleep (approximate/minimum) number of microseconds. We use timer2 
- * which runs at 62.50 kHz, or at 16 usec/tick. Maximum delay is about 2 
+ * usleep: sleep (approximate/minimum) number of microseconds. We use timer2
+ * which runs at 62.50 kHz, or at 16 usec/tick. Maximum delay is about 2
  * milliseconds . For longer delays, use msleep().
  */
 void usleep(int usecs) {
@@ -135,8 +137,8 @@ int timer_get_pen_pressure() {
 
 /**
  * Sets the pen pressure according to a value from MIN_PEN_PRESSURE to MAX_PEN_PRESSURE.
- * 
- * @param pressure Integer 
+ *
+ * @param pressure Integer
  */
 void timer_set_pen_pressure(int pressure) {
     // pen pressure is displayed in single increment steps
@@ -161,7 +163,7 @@ void timer_set_pen_pressure(int pressure) {
 }
 
 /**
- * Init timers 
+ * Init timers
  */
 void timer_init(void) {
     //ATMega1281 - Used in Cricut Expression CREX001
@@ -185,7 +187,7 @@ void timer_init(void) {
     OCR1B = 1023;
     TCCR1B = (1 << WGM12) | (1 << CS10); // 00001001 wave form generation mode,CLKio no prescaling
 
-    // Timer 3, WGM mode 15 (1111), Fast PWM using OCR3A 
+    // Timer 3, WGM mode 15 (1111), Fast PWM using OCR3A
     // this is used by the beeper, OCR3A is set in beeper_on(hz)
     TCCR3A = (1 << COM3A0) | (1 << WGM31) | (1 << WGM30);
     TCCR3B = (1 << WGM33) | (1 << WGM32) | 1;

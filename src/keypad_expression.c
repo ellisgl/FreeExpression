@@ -5,11 +5,11 @@
  *
  * Keypad is designed as a matrix with 24 cols, and 5 c. The 15 rows
  * are selected using a 16 bit shift register, with CLK/Data inputs.
- * 
+ *
  * NOTE: Due to this design, if you press two (or more) keys in the same row
  * simultaneously, the the two corresponding outputs of the shift register
  * are shorted through the keys, and the CPU gets undefined results.
- * 
+ *
  * Pinout of the connector is as follows:
  *
  * Pin 	|  Name	| AVR  | Description
@@ -27,21 +27,21 @@
  * 11   | Data  | PD6  | Shift register data in
  * 12   | Test  |      | Shift register data out (not used)
  * 13	| NC	| NC   |
- * 14	| NC	| NC   | 	
- * Key layout is straightforward: column 0 is left, column 13 is right, 
- * row 0 is top, row 4 is bottom. The grey arrow keys and CUT key are 
+ * 14	| NC	| NC   |
+ * Key layout is straightforward: column 0 is left, column 13 is right,
+ * row 0 is top, row 4 is bottom. The grey arrow keys and CUT key are
  * mapped in column 14:
- * 
+ *
  * Row  | Key
  *------+------
  *  0   | Right
- *  1   | Left 
- *  2   | CUT 
- *  3   | Up 
- *  4   | Down 
- * 
- * The various LEDs are also connected to the shift register outputs, 
- * and can be turned on with the LED Enable pin (0=On, 1=Off).  
+ *  1   | Left
+ *  2   | CUT
+ *  3   | Up
+ *  4   | Down
+ *
+ * The various LEDs are also connected to the shift register outputs,
+ * and can be turned on with the LED Enable pin (0=On, 1=Off).
  *
  * LED Layout is as follows:
  *
@@ -50,7 +50,7 @@
  * COL4  COL5				COL10 (LED between CUT and Up arrow)
  * COL6  COL7
  * COL8  COL9
- * 
+ *
  *
  * This file is part of FreeExpression.
  *
@@ -70,6 +70,7 @@
  */
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/iom1281.h>
 #include <inttypes.h>
 #include <stdio.h>
 
@@ -133,8 +134,8 @@ char keypad_stop_pressed(void) {
 }
 
 /**
- * keypad_scan: perform a single scan of keyboard. Returns keycode of 
- * key that was pressed (or -1 if nothing).  
+ * keypad_scan: perform a single scan of keyboard. Returns keycode of
+ * key that was pressed (or -1 if nothing).
  */
 int keypad_scan(void) {
     int row, col;
@@ -150,7 +151,7 @@ int keypad_scan(void) {
         clk_l();
     }
     // keypad_write_cols( ~leds );
-    // leds_on( );	
+    // leds_on( );
 
     // keyboard has been scanned, now look for pressed keys
     for (col = 0; col < KBD_MAX_COLS; ++col) {
@@ -226,14 +227,14 @@ int keypad_poll(void) {
             break;
 
         case KEYPAD_MINUS:
-            if (k_state == KEYPAD_XTRA1) { 
+            if (k_state == KEYPAD_XTRA1) {
                 // PRESSURE SET
                 // pressure is inversely related to 1023, min pressure
                 int p = timer_get_pen_pressure() - 1;
                 timer_set_pen_pressure(p);
             }
 
-            if (k_state == KEYPAD_XTRA2) { 
+            if (k_state == KEYPAD_XTRA2) {
                 // SPEED SET
                 int p = timer_get_stepper_speed() - 1;
                 timer_set_stepper_speed(p);
@@ -247,7 +248,7 @@ int keypad_poll(void) {
                 timer_set_pen_pressure(p);
             }
 
-            if (k_state == KEYPAD_XTRA2) { 
+            if (k_state == KEYPAD_XTRA2) {
                 // SPEED SET
                 int p = timer_get_stepper_speed() + 1;
                 timer_set_stepper_speed(p);

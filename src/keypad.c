@@ -2,11 +2,11 @@
  * keypad.c
  *
  * Keypad is designed as a matrix with 20 cols, and 5 rows. A 20 bit shift register controls the individual column bits
- * 
+ *
  * NOTE: Due to this design, if you press two (or more) keys in the same row
  * simultaneously, the the two corresponding outputs of the shift register
  * are shorted through the keys, and the CPU gets undefined results.
- * 
+ *
  * Pin-out of the connector is as follows:
  *
  * Pin 	|  Name	| AVR  | Description
@@ -24,23 +24,23 @@
  * 11   | Data  | PD6  | Shift register data in
  * 12   | Test  |      | Shift register data out (not used)
  * 13	| NC	| NC   |
- * 14	| NC	| NC   | 	
- * Key layout is straightforward: column 0 is left, column 13 is right, 
- * row 0 is top, row 4 is bottom. The rest of the keys are on columns 14-19 
+ * 14	| NC	| NC   |
+ * Key layout is straightforward: column 0 is left, column 13 is right,
+ * row 0 is top, row 4 is bottom. The rest of the keys are on columns 14-19
  *
  * Cricut Expression: The grey arrow keys and CUT key are mapped in column 14:
- * 
+ *
  * Row  | Key
  *------+------
  *  0   | Right
- *  1   | Left 
- *  2   | CUT 
- *  3   | Up 
- *  4   | Down 
- 
- * 
- * The various LEDs are also connected to the shift register outputs, 
- * and can be turned on with the LED Enable pin (0=On, 1=Off).  
+ *  1   | Left
+ *  2   | CUT
+ *  3   | Up
+ *  4   | Down
+
+ *
+ * The various LEDs are also connected to the shift register outputs,
+ * and can be turned on with the LED Enable pin (0=On, 1=Off).
  *
  * LED Layout is as follows:
  * Function keys, F1 to F6, Material Size, Real Dial Size
@@ -49,14 +49,14 @@
  * COL4  COL5				COL10 (LED between CUT and Up arrow)
  * COL6  COL7
  * COL8  COL9
- * 
+ *
  * On the Expression machine, there are numerous extra buttons that have LEDS
  * But I cannot figure out how to individually address any of the leds
  * Portrait, Mix n Match, Quantity
  * Fit to Page, Fit to Length, Auto Fill
  * Multi Cut, Center Point, Flip, Line Return
  * Settings, Mat Size, xtra1, xtra2
- * - arrow, + arrow, OK 
+ * - arrow, + arrow, OK
  *
  * This source original developped by  https://github.com/Arlet/Freecut
  *
@@ -78,18 +78,21 @@
  */
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/iom1281.h>
 #include <inttypes.h>
 #include <stdio.h>
+
 #include "keypad.h"
 #include "timer.h"
 #include "stepper.h"
 #include "display.h"
 #include "flash.h"
 #include "usb.h"
+
 // pin assignment
 // These appear to be the same on both the Cake and Expression machines
 // There are some machine specific routines in the keypad_cake.c and keypad_expression.c files
-// 
+//
 #define STOP (1 << 0) // PD0
 #define LEDS (1 << 5) // PD5
 #define DATA (1 << 6)  // PD6
@@ -145,9 +148,9 @@ char keypad_stop_pressed(void) {
     return !c;
 }
 
-/* 
- * keypad_scan: perform a single scan of keyboard. Returns keycode of 
- * key that was pressed (or -1 if nothing).  
+/*
+ * keypad_scan: perform a single scan of keyboard. Returns keycode of
+ * key that was pressed (or -1 if nothing).
  */
 int keypad_scan(void) {
     int row, col;
@@ -246,13 +249,13 @@ int keypad_poll(void) {
         case KEYPAD_MOVEUPRIGHT:
             stepper_jog_manual(key, 25); // move 1/16" each increment
 
-            // For auto key repeat on these buttons, clear previous kbd status[] so that a new button press registers again 
+            // For auto key repeat on these buttons, clear previous kbd status[] so that a new button press registers again
             for (c = 0; c < KBD_MAX_COLS; ++c) {
                 keypad_prev[c] = 0;
             }
             break;
 
-#ifdef DEBUG_FLASH  
+#ifdef DEBUG_FLASH
         case KEYPAD_F1:
             flash_test();
             break;
@@ -279,7 +282,7 @@ int keypad_poll(void) {
             k_state = key;
             break;
 
-        case KEYPAD_MINUS: // decrements either pressure or speed depending on what was last pressed 
+        case KEYPAD_MINUS: // decrements either pressure or speed depending on what was last pressed
             if (k_state == KEYPAD_XTRA1) {
                 // PRESSURE SET
                 // pressure is inversely related to 1023, min pressure
@@ -287,23 +290,23 @@ int keypad_poll(void) {
                 timer_set_pen_pressure(p);
             }
 
-            if (k_state == KEYPAD_XTRA2) { 
+            if (k_state == KEYPAD_XTRA2) {
                 // SPEED SET
                 int p = timer_get_stepper_speed() - 1;
                 timer_set_stepper_speed(p);
             }
             break;
 
-        case KEYPAD_PLUS: 
-            // Increments either pressure or speed depending on what was last pressed 
-            if (k_state == KEYPAD_XTRA1) { 
+        case KEYPAD_PLUS:
+            // Increments either pressure or speed depending on what was last pressed
+            if (k_state == KEYPAD_XTRA1) {
                 // PRESSURE SET
                 // pressure is inversely related to 1023, min pressure
                 int p = timer_get_pen_pressure() + 1;
                 timer_set_pen_pressure(p);
             }
 
-            if (k_state == KEYPAD_XTRA2) { 
+            if (k_state == KEYPAD_XTRA2) {
                 // SPEED SET
                 int p = timer_get_stepper_speed() + 1;
                 timer_set_stepper_speed(p);
